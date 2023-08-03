@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package peoplesmarkets.pagination.v1;
+
+message Pagination {
+  int64 page = 1;
+  int64 size = 2;
+}

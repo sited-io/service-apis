@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package peoplesmarkets.commerce.v1;
+
+import "peoplesmarkets/pagination/v1/pagination.proto";
+
+service ShopService {
+  rpc CreateShop(CreateShopRequest) returns (CreateShopResponse);
+  rpc GetShop(GetShopRequest) returns (GetShopResponse);
+  rpc ListShops(ListShopsRequest) returns (ListShopsResponse);
+  rpc UpdateShop(UpdateShopRequest) returns (UpdateShopResponse);
+  rpc DeleteShop(DeleteShopRequest) returns (DeleteShopResponse);
+}
+
+message ShopResponse {
+  string shop_id = 1;
+  string user_id = 2;
+
+  int64 created_at = 3;
+  int64 updated_at = 4;
+
+  string name = 5;
+  string description = 6;
+}
+
+message CreateShopRequest {
+  string name = 1;
+  string desctiption = 2;
+}
+
+message CreateShopResponse {
+  ShopResponse shop = 1;
+}
+
+message GetShopRequest {
+  string shop_id = 1;
+}
+
+message GetShopResponse {
+  ShopResponse shop = 1;
+}
+
+message ListShopsRequest {}
+
+message ListShopsResponse {
+  repeated ShopResponse shops = 1;
+  peoplesmarkets.pagination.v1.Pagination pagination = 2;
+}
+
+message UpdateShopRequest {
+  string shop_id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message UpdateShopResponse {
+  ShopResponse shop = 1;
+}
+
+message DeleteShopRequest {
+  string shop_id = 1;
+}
+
+message DeleteShopResponse {}

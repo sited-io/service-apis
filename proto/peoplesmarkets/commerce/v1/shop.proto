@@ -40,7 +40,9 @@ message GetShopResponse {
   ShopResponse shop = 1;
 }
 
-message ListShopsRequest {}
+message ListShopsRequest {
+  string user_id = 1;
+}
 
 message ListShopsResponse {
   repeated ShopResponse shops = 1;

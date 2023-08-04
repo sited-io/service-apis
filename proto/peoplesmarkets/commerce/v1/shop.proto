@@ -25,7 +25,7 @@ message ShopResponse {
 
 message CreateShopRequest {
   string name = 1;
-  string description = 2;
+  optional string description = 2;
 }
 
 message CreateShopResponse {
@@ -41,7 +41,7 @@ message GetShopResponse {
 }
 
 message ListShopsRequest {
-  string user_id = 1;
+  optional string user_id = 1;
 }
 
 message ListShopsResponse {
@@ -51,8 +51,8 @@ message ListShopsResponse {
 
 message UpdateShopRequest {
   string shop_id = 1;
-  string name = 2;
-  string description = 3;
+  optional string name = 2;
+  optional string description = 3;
 }
 
 message UpdateShopResponse {

@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package peoplesmarkets.ordering.v1;
+
+enum Direction {
+  DIRECTION_UNSPECIFIED = 0;
+  DIRECTION_ASC = 1;
+  DIRECTION_DESC = 2;
+}

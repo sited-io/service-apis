@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package peoplesmarkets.commerce.v1;
 
+import "peoplesmarkets/ordering/v1/ordering.proto";
 import "peoplesmarkets/pagination/v1/pagination.proto";
 
 service ShopService {
@@ -40,9 +41,33 @@ message GetShopResponse {
   ShopResponse shop = 1;
 }
 
+enum ShopsOrderByField {
+  SHOPS_ORDER_BY_FIELD_UNSPECIFIED = 0;
+  SHOPS_ORDER_BY_FIELD_CREATED_AT = 1;
+  SHOPS_ORDER_BY_FIELD_UPDATED_AT = 2;
+  SHOPS_ORDER_BY_FIELD_NAME = 3;
+}
+
+message ShopsOrderBy {
+  ShopsOrderByField field = 1;
+  peoplesmarkets.ordering.v1.Direction direction = 2;
+}
+
+enum ShopsFilterField {
+  SHOPS_FILTER_FIELD_UNSPECIFIED = 0;
+  SHOPS_FILTER_FIELD_NAME = 1;
+}
+
+message ShopsFilter {
+  ShopsFilterField field = 1;
+  string filter = 2;
+}
+
 message ListShopsRequest {
   optional string user_id = 1;
   optional peoplesmarkets.pagination.v1.Pagination pagination = 2;
+  optional ShopsOrderBy order_by = 3;
+  optional ShopsFilter filter = 4;
 }
 
 message ListShopsResponse {

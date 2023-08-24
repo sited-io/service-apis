@@ -81,7 +81,7 @@ message ListOffersResponse {
 message UpdateOfferRequest {
   string offer_id = 1;
   optional string name = 2;
-  optional string descritpion = 3;
+  optional string description = 3;
 }
 
 message UpdateOfferResponse {

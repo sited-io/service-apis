@@ -1,0 +1,92 @@
+syntax = "proto3";
+
+package peoplesmarkets.commerce.v1;
+
+import "peoplesmarkets/ordering/v1/ordering.proto";
+import "peoplesmarkets/pagination/v1/pagination.proto";
+
+service OfferService {
+  rpc CreateOffer(CreateOfferRequest) returns (CreateOfferResponse);
+  rpc GetOffer(GetOfferRequest) returns (GetOfferResponse);
+  rpc ListOffers(ListOffersRequest) returns (ListOffersResponse);
+  rpc UpdateOffer(UpdateOfferRequest) returns (UpdateOfferResponse);
+  rpc DeleteOffer(DeleteOfferRequest) returns (DeleteOfferResponse);
+}
+
+message OfferResponse {
+  string offer_id = 1;
+  string user_id = 2;
+
+  int64 created_at = 3;
+  int64 updated_at = 4;
+
+  string name = 5;
+  string description = 6;
+}
+
+message CreateOfferRequest {
+  string name = 1;
+  optional string description = 2;
+}
+
+message CreateOfferResponse {
+  OfferResponse offer = 1;
+}
+
+message GetOfferRequest {
+  string offer_id = 1;
+}
+
+message GetOfferResponse {
+  OfferResponse offer = 1;
+}
+
+enum OffersOrderByField {
+  OFFERS_ORDER_BY_FIELD_UNSPECIFIED = 0;
+  OFFERS_ORDER_BY_FIELD_CREATED_AT = 1;
+  OFFERS_ORDER_BY_FIELD_UPDATED_AT = 2;
+  OFFERS_ORDER_BY_FIELD_NAME = 3;
+}
+
+message OffersOrderBy {
+  OffersOrderByField field = 1;
+  peoplesmarkets.ordering.v1.Direction direction = 2;
+}
+
+enum OffersFilterField {
+  OFFERS_FILTER_FIELD_UNSPECIFIED = 0;
+  OFFERS_FILTER_FIELD_NAME = 1;
+}
+
+message OffersFilter {
+  OffersFilterField field = 1;
+  string filter = 2;
+}
+
+message ListOffersRequest {
+  optional string user_id = 1;
+  optional peoplesmarkets.pagination.v1.Pagination pagination = 2;
+  optional OffersOrderBy order_by = 3;
+  optional OffersFilter filter = 4;
+}
+
+message ListOffersResponse {
+  repeated OfferResponse offers = 1;
+  peoplesmarkets.pagination.v1.Pagination pagination = 2;
+}
+
+message UpdateOfferRequest {
+  string offer_id = 1;
+  optional string name = 2;
+  optional string descritpion = 3;
+}
+
+message UpdateOfferResponse {
+  OfferResponse offer = 1;
+}
+
+message DeleteOfferRequest {
+  string offer_id = 1;
+}
+
+message DeleteOfferResponse {}

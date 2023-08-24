@@ -15,18 +15,20 @@ service OfferService {
 
 message OfferResponse {
   string offer_id = 1;
-  string user_id = 2;
+  string market_booth_id = 2;
+  string user_id = 3;
 
-  int64 created_at = 3;
-  int64 updated_at = 4;
+  int64 created_at = 4;
+  int64 updated_at = 5;
 
-  string name = 5;
-  string description = 6;
+  string name = 6;
+  string description = 7;
 }
 
 message CreateOfferRequest {
-  string name = 1;
-  optional string description = 2;
+  string market_booth_id = 1;
+  string name = 2;
+  optional string description = 3;
 }
 
 message CreateOfferResponse {
@@ -65,9 +67,10 @@ message OffersFilter {
 
 message ListOffersRequest {
   optional string user_id = 1;
-  optional peoplesmarkets.pagination.v1.Pagination pagination = 2;
-  optional OffersOrderBy order_by = 3;
-  optional OffersFilter filter = 4;
+  optional string market_booth_id = 2;
+  optional peoplesmarkets.pagination.v1.Pagination pagination = 3;
+  optional OffersOrderBy order_by = 4;
+  optional OffersFilter filter = 5;
 }
 
 message ListOffersResponse {

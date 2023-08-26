@@ -56,11 +56,13 @@ message MarketBoothsOrderBy {
 enum MarketBoothsFilterField {
   MARKET_BOOTHS_FILTER_FIELD_UNSPECIFIED = 0;
   MARKET_BOOTHS_FILTER_FIELD_NAME = 1;
+  MARKET_BOOTHS_FILTER_FIELD_DESCRIPTION = 2;
+  MARKET_BOOTHS_FILTER_FIELD_NAME_AND_DESCRIPTION = 3;
 }
 
 message MarketBoothsFilter {
   MarketBoothsFilterField field = 1;
-  string filter = 2;
+  string query = 2;
 }
 
 message ListMarketBoothsRequest {

@@ -58,11 +58,13 @@ message OffersOrderBy {
 enum OffersFilterField {
   OFFERS_FILTER_FIELD_UNSPECIFIED = 0;
   OFFERS_FILTER_FIELD_NAME = 1;
+  OFFERS_FILTER_FIELD_DESCRIPTION = 2;
+  OFFERS_FILTER_FIELD_NAME_AND_DESCRIPTION = 3;
 }
 
 message OffersFilter {
   OffersFilterField field = 1;
-  string filter = 2;
+  string query = 2;
 }
 
 message ListOffersRequest {

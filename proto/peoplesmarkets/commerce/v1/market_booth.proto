@@ -29,7 +29,6 @@ message MarketBoothResponse {
 message CreateMarketBoothRequest {
   string name = 1;
   optional string description = 2;
-  optional peoplesmarkets.media.v1.MediaUpload image = 3;
 }
 
 message CreateMarketBoothResponse {

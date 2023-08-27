@@ -22,8 +22,8 @@ message MarketBoothResponse {
   int64 updated_at = 4;
 
   string name = 5;
-  string description = 6;
-  string image_url = 7;
+  optional string description = 6;
+  optional string image_url = 7;
 }
 
 message CreateMarketBoothRequest {

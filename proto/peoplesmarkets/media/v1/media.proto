@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package peoplesmarkets.media.v1;
+
+enum MediaUploadEncoding {
+  MEDIA_UPLOAD_ENCODING_UNSPECIFIED = 0;
+  MEDIA_UPLOAD_ENCODING_BASE64 = 1;
+}
+
+message MediaUpload {
+  string name = 1;
+  MediaUploadEncoding encoding = 2;
+  string data = 3;
+}

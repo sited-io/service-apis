@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package peoplesmarkets.commerce.v1;
 
+import "peoplesmarkets/media/v1/media.proto";
 import "peoplesmarkets/ordering/v1/ordering.proto";
 import "peoplesmarkets/pagination/v1/pagination.proto";
 
@@ -22,11 +23,13 @@ message MarketBoothResponse {
 
   string name = 5;
   string description = 6;
+  string image_url = 7;
 }
 
 message CreateMarketBoothRequest {
   string name = 1;
   optional string description = 2;
+  optional peoplesmarkets.media.v1.MediaUpload image = 3;
 }
 
 message CreateMarketBoothResponse {
@@ -81,6 +84,7 @@ message UpdateMarketBoothRequest {
   string market_booth_id = 1;
   optional string name = 2;
   optional string description = 3;
+  optional peoplesmarkets.media.v1.MediaUpload image = 4;
 }
 
 message UpdateMarketBoothResponse {

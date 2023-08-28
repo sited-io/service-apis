@@ -100,7 +100,7 @@ message DeleteMarketBoothResponse {}
 
 message UpdateImageOfMarketBoothRequest {
   string market_booth_id = 1;
-  peoplesmarkets.media.v1.MediaUpload image = 4;
+  peoplesmarkets.media.v1.MediaUpload image = 2;
 }
 
 message UpdateImageOfMarketBoothResponse {}

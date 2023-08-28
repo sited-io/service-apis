@@ -12,6 +12,9 @@ service MarketBoothService {
   rpc ListMarketBooths(ListMarketBoothsRequest) returns (ListMarketBoothsResponse);
   rpc UpdateMarketBooth(UpdateMarketBoothRequest) returns (UpdateMarketBoothResponse);
   rpc DeleteMarketBooth(DeleteMarketBoothRequest) returns (DeleteMarketBoothResponse);
+
+  rpc UpdateImageOfMarketBooth(UpdateImageOfMarketBoothRequest) returns (UpdateImageOfMarketBoothResponse);
+  rpc RemoveImageFromMarketBooth(RemoveImageFromMarketBoothRequest) returns (RemoveImageFromMarketBoothResponse);
 }
 
 message MarketBoothResponse {
@@ -83,7 +86,6 @@ message UpdateMarketBoothRequest {
   string market_booth_id = 1;
   optional string name = 2;
   optional string description = 3;
-  optional peoplesmarkets.media.v1.MediaUpload image = 4;
 }
 
 message UpdateMarketBoothResponse {
@@ -95,3 +97,16 @@ message DeleteMarketBoothRequest {
 }
 
 message DeleteMarketBoothResponse {}
+
+message UpdateImageOfMarketBoothRequest {
+  string market_booth_id = 1;
+  peoplesmarkets.media.v1.MediaUpload image = 4;
+}
+
+message UpdateImageOfMarketBoothResponse {}
+
+message RemoveImageFromMarketBoothRequest {
+  string market_booth_id = 1;
+}
+
+message RemoveImageFromMarketBoothResponse {}

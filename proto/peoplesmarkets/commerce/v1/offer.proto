@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package peoplesmarkets.commerce.v1;
 
+import "peoplesmarkets/media/v1/media.proto";
 import "peoplesmarkets/ordering/v1/ordering.proto";
 import "peoplesmarkets/pagination/v1/pagination.proto";
 
@@ -11,6 +12,9 @@ service OfferService {
   rpc ListOffers(ListOffersRequest) returns (ListOffersResponse);
   rpc UpdateOffer(UpdateOfferRequest) returns (UpdateOfferResponse);
   rpc DeleteOffer(DeleteOfferRequest) returns (DeleteOfferResponse);
+
+  rpc AddImageToOffer(AddImageToOfferRequest) returns (AddImageToOfferResponse);
+  rpc RemoveImageFromOffer(RemoveImageFromOfferRequest) returns (RemoveImageFromOfferResponse);
 }
 
 message OfferResponse {
@@ -23,6 +27,14 @@ message OfferResponse {
 
   string name = 6;
   string description = 7;
+
+  repeated OfferImageResponse images = 8;
+}
+
+message OfferImageResponse {
+  string offer_image_id = 1;
+  string image_url = 2;
+  int64 ordering = 3;
 }
 
 message CreateOfferRequest {
@@ -95,3 +107,17 @@ message DeleteOfferRequest {
 }
 
 message DeleteOfferResponse {}
+
+message AddImageToOfferRequest {
+  string offer_id = 1;
+  peoplesmarkets.media.v1.MediaUpload image = 2;
+  int64 ordering = 3;
+}
+
+message AddImageToOfferResponse {}
+
+message RemoveImageFromOfferRequest {
+  string offer_image_id = 1;
+}
+
+message RemoveImageFromOfferResponse {}

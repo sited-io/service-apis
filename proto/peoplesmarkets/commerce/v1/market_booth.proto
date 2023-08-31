@@ -51,11 +51,13 @@ enum MarketBoothsOrderByField {
   MARKET_BOOTHS_ORDER_BY_FIELD_CREATED_AT = 1;
   MARKET_BOOTHS_ORDER_BY_FIELD_UPDATED_AT = 2;
   MARKET_BOOTHS_ORDER_BY_FIELD_NAME = 3;
+  MARKET_BOOTHS_ORDER_BY_FIELD_RANDOM = 4; // default
 }
 
 message MarketBoothsOrderBy {
   MarketBoothsOrderByField field = 1;
   peoplesmarkets.ordering.v1.Direction direction = 2;
+  optional string random_seed = 3;
 }
 
 enum MarketBoothsFilterField {

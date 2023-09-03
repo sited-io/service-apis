@@ -9,14 +9,11 @@ service StripeService {
 
 message CreateAccountRequest {}
 
-message CreateAccountResponse {
-  string account_id = 1;
-}
+message CreateAccountResponse {}
 
 message CreateAccountLinkRequest {
-  string account_id = 1;
-  string refresh_url = 2;
-  string return_url = 3;
+  string refresh_url = 1;
+  string return_url = 2;
 }
 
 message CreateAccountLinkResponse {

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package peoplesmarkets.payments.v1;
+package peoplesmarkets.payment.v1;
 
 service StripeService {
   rpc CreateAccount(CreateAccountRequest) returns (CreateAccountResponse);

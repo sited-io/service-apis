@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package peoplesmarkets.payment.v1;
+
+service StripeService {
+  rpc CreateAccount(CreateAccountRequest) returns (CreateAccountResponse);
+  rpc CreateAccountLink(CreateAccountLinkRequest) returns (CreateAccountLinkResponse);
+  rpc GetAccount(GetAccountRequest) returns (GetAccountResponse);
+}
+
+message CreateAccountRequest {}
+
+message CreateAccountResponse {}
+
+message CreateAccountLinkRequest {
+  string refresh_url = 1;
+  string return_url = 2;
+}
+
+message CreateAccountLinkResponse {
+  string link = 1;
+}
+
+message GetAccountRequest {}
+
+message GetAccountResponse {
+  bool charges_enabled = 1;
+  bool details_submitted = 2;
+}

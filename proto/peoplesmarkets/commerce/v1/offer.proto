@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package peoplesmarkets.commerce.v1;
 
+import "peoplesmarkets/commerce/v1/price.proto";
 import "peoplesmarkets/media/v1/media.proto";
 import "peoplesmarkets/ordering/v1/ordering.proto";
 import "peoplesmarkets/pagination/v1/pagination.proto";
@@ -29,6 +30,8 @@ message OfferResponse {
   string description = 7;
 
   repeated OfferImageResponse images = 8;
+
+  optional Price price = 9;
 }
 
 message OfferImageResponse {
@@ -41,6 +44,7 @@ message CreateOfferRequest {
   string market_booth_id = 1;
   string name = 2;
   optional string description = 3;
+  optional Price price = 4;
 }
 
 message CreateOfferResponse {
@@ -96,6 +100,7 @@ message UpdateOfferRequest {
   string offer_id = 1;
   optional string name = 2;
   optional string description = 3;
+  optional Price price = 4;
 }
 
 message UpdateOfferResponse {

@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package peoplesmarkets.commerce.v1;
+
+enum Currency {
+  CURRENCY_UNSPECIFIED = 0;
+  CURRENCY_EUR = 1;
+}
+
+enum PriceType {
+  PRICE_TYPE_UNSPECIFIED = 0;
+  PRICE_TYPE_ONE_TIME = 1;
+}
+
+enum PriceBillingScheme {
+  PRICE_BILLING_SCHEME_UNSPECIFIED = 0;
+  PRICE_BILLING_SCHEME_PER_UNIT = 1;
+}
+
+message Price {
+  string price_id = 1;
+  Currency currency = 2;
+  PriceType price_type = 3;
+  PriceBillingScheme billing_scheme = 4;
+  int64 unit_amont = 5;
+}

@@ -6,24 +6,51 @@ service StripeService {
   rpc CreateAccount(CreateAccountRequest) returns (CreateAccountResponse);
   rpc CreateAccountLink(CreateAccountLinkRequest) returns (CreateAccountLinkResponse);
   rpc GetAccount(GetAccountRequest) returns (GetAccountResponse);
+  rpc GetAccountDetails(GetAccountDetailsRequest) returns (GetAccountDetailsResponse);
 }
 
-message CreateAccountRequest {}
+message StripeAccount {
+  string market_booth_id = 1;
+  string stripe_account_id = 2;
+  bool enabled = 3;
+}
 
-message CreateAccountResponse {}
+message StripeAccountDetails {
+  bool charges_enabled = 1;
+  bool details_submitted = 2;
+}
+
+message CreateAccountRequest {
+  string market_booth_id = 1;
+}
+
+message CreateAccountResponse {
+  StripeAccount account = 1;
+}
 
 message CreateAccountLinkRequest {
-  string refresh_url = 1;
-  string return_url = 2;
+  string market_booth_id = 1;
+  string refresh_url = 2;
+  string return_url = 3;
 }
 
 message CreateAccountLinkResponse {
   string link = 1;
 }
 
-message GetAccountRequest {}
+message GetAccountRequest {
+  string market_booth_id = 1;
+}
 
 message GetAccountResponse {
-  bool charges_enabled = 1;
-  bool details_submitted = 2;
+  StripeAccount account = 1;
+}
+
+message GetAccountDetailsRequest {
+  string market_booth_id = 1;
+}
+
+message GetAccountDetailsResponse {
+  StripeAccount account = 1;
+  StripeAccountDetails details = 2;
 }

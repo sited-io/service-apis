@@ -7,6 +7,7 @@ service StripeService {
   rpc CreateAccountLink(CreateAccountLinkRequest) returns (CreateAccountLinkResponse);
   rpc GetAccount(GetAccountRequest) returns (GetAccountResponse);
   rpc GetAccountDetails(GetAccountDetailsRequest) returns (GetAccountDetailsResponse);
+  rpc CreateCheckoutSession(CreateCheckoutSessionRequest) returns (CreateCheckoutSessionResponse);
 }
 
 message StripeAccount {
@@ -53,4 +54,14 @@ message GetAccountDetailsRequest {
 message GetAccountDetailsResponse {
   StripeAccount account = 1;
   StripeAccountDetails details = 2;
+}
+
+message CreateCheckoutSessionRequest {
+  string offer_id = 1;
+  string success_url = 2;
+  string cancel_url = 3;
+}
+
+message CreateCheckoutSessionResponse {
+  string link = 1;
 }

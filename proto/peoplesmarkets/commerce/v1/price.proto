@@ -22,5 +22,5 @@ message Price {
   Currency currency = 2;
   PriceType price_type = 3;
   PriceBillingScheme billing_scheme = 4;
-  int64 unit_amont = 5;
+  uint32 unit_amont = 5;
 }

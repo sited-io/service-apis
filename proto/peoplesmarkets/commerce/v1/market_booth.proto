@@ -27,11 +27,16 @@ message MarketBoothResponse {
   string name = 5;
   optional string description = 6;
   optional string image_url = 7;
+
+  uint64 platform_fee_percent = 8;
+  uint64 minimum_platform_fee_cent = 9;
 }
 
 message CreateMarketBoothRequest {
   string name = 1;
   optional string description = 2;
+  optional uint64 platform_fee_percent = 3;
+  optional uint64 minimum_platform_fee_cent = 4;
 }
 
 message CreateMarketBoothResponse {
@@ -87,6 +92,8 @@ message UpdateMarketBoothRequest {
   string market_booth_id = 1;
   optional string name = 2;
   optional string description = 3;
+  optional uint64 platform_fee_percent = 4;
+  optional uint64 minimum_platform_fee_cent = 5;
 }
 
 message UpdateMarketBoothResponse {

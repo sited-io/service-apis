@@ -32,6 +32,8 @@ message OfferResponse {
   repeated OfferImageResponse images = 8;
 
   optional Price price = 9;
+
+  string market_booth_name = 10;
 }
 
 message OfferImageResponse {

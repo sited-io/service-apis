@@ -15,7 +15,7 @@ service MediaService {
 
 message MediaResponse {
   string media_id = 1;
-  string offer_ids = 2;
+  repeated string offer_ids = 2;
   string market_booth_id = 3;
   string user_id = 4;
 
@@ -24,6 +24,17 @@ message MediaResponse {
 
   string name = 7;
   optional bytes data = 8;
+}
+
+enum MediaUploadEncoding {
+  MEDIA_UPLOAD_ENCODING_UNSPECIFIED = 0;
+  MEDIA_UPLOAD_ENCODING_BASE64 = 1;
+}
+
+message MediaUpload {
+  string name = 1;
+  MediaUploadEncoding encoding = 2;
+  string data = 3;
 }
 
 message CreateMediaRequest {
@@ -92,14 +103,3 @@ message DeleteMediaRequest {
 }
 
 message DeleteMediaResponse {}
-
-enum MediaUploadEncoding {
-  MEDIA_UPLOAD_ENCODING_UNSPECIFIED = 0;
-  MEDIA_UPLOAD_ENCODING_BASE64 = 1;
-}
-
-message MediaUpload {
-  string name = 1;
-  MediaUploadEncoding encoding = 2;
-  string data = 3;
-}

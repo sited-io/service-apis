@@ -2,6 +2,97 @@ syntax = "proto3";
 
 package peoplesmarkets.media.v1;
 
+import "peoplesmarkets/ordering/v1/ordering.proto";
+import "peoplesmarkets/pagination/v1/pagination.proto";
+
+service MediaService {
+  rpc CreateMedia(CreateMediaRequest) returns (CreateMediaResponse);
+  rpc GetMedia(GetMediaRequest) returns (GetMediaResponse);
+  rpc ListMedia(ListMediaRequest) returns (ListMediaResponse);
+  rpc UpdateMedia(UpdateMediaRequest) returns (UpdateMediaResponse);
+  rpc DeleteMedia(DeleteMediaRequest) returns (DeleteMediaResponse);
+}
+
+message MediaResponse {
+  string media_id = 1;
+  string offer_ids = 2;
+  string market_booth_id = 3;
+  string user_id = 4;
+
+  int64 created_at = 5;
+  int64 updated_at = 6;
+
+  string name = 7;
+  optional bytes data = 8;
+}
+
+message CreateMediaRequest {
+  string market_booth_id = 1;
+  string name = 2;
+  MediaUpload data = 3;
+}
+
+message CreateMediaResponse {
+  MediaResponse media = 1;
+}
+
+message GetMediaRequest {
+  string media_id = 1;
+}
+
+message GetMediaResponse {
+  MediaResponse media = 1;
+}
+
+enum MediaOrderByField {
+  MEDIA_ORDER_BY_FIELD_UNSPECIFIED = 0;
+  MEDIA_ORDER_BY_FIELD_CREATED_AT = 1;
+  MEDIA_ORDER_BY_FIELD_UPDATED_AT = 2;
+}
+
+message MediaOrderBy {
+  MediaOrderByField field = 1;
+  peoplesmarkets.ordering.v1.Direction direction = 2;
+}
+
+enum MediaFilterField {
+  MEDIA_FILTER_FIELD_UNSPECIFIED = 0;
+  MEDIA_FILTER_FIELD_NAME = 1;
+}
+
+message MediaFilter {
+  MediaFilterField field = 1;
+  string query = 2;
+}
+
+message ListMediaRequest {
+  string market_booth_id = 1;
+  optional peoplesmarkets.pagination.v1.Pagination pagination = 2;
+  optional MediaOrderBy order_by = 3;
+  optional MediaFilter filter = 4;
+}
+
+message ListMediaResponse {
+  repeated MediaResponse medias = 1;
+  peoplesmarkets.pagination.v1.Pagination pagination = 2;
+}
+
+message UpdateMediaRequest {
+  string media_id = 1;
+  optional string name = 2;
+  optional bytes data = 3;
+}
+
+message UpdateMediaResponse {
+  MediaResponse media = 1;
+}
+
+message DeleteMediaRequest {
+  string media_id = 1;
+}
+
+message DeleteMediaResponse {}
+
 enum MediaUploadEncoding {
   MEDIA_UPLOAD_ENCODING_UNSPECIFIED = 0;
   MEDIA_UPLOAD_ENCODING_BASE64 = 1;

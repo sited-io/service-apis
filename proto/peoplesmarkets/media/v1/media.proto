@@ -13,7 +13,7 @@ service MediaService {
   rpc DeleteMedia(DeleteMediaRequest) returns (DeleteMediaResponse);
 
   rpc InitiateMultipartUpload(InitiateMultipartUploadRequest) returns (InitiateMultipartUploadResponse);
-  rpc PutMultipartUpload(PutMultipartUploadRequest) returns (PutMultipartUploadResponse);
+  rpc PutMultipartChunk(PutMultipartChunkRequest) returns (PutMultipartChunkResponse);
   rpc CompleteMultipartUpload(CompleteMultipartUploadRequest) returns (CompleteMultipartUploadResponse);
 }
 
@@ -118,7 +118,7 @@ message InitiateMultipartUploadResponse {
   string upload_id = 2;
 }
 
-message PutMultipartUploadRequest {
+message PutMultipartChunkRequest {
   string media_id = 1;
   string upload_id = 2;
   uint32 part_number = 3;
@@ -131,7 +131,7 @@ message Part {
   string etag = 2;
 }
 
-message PutMultipartUploadResponse {
+message PutMultipartChunkResponse {
   Part part = 1;
 }
 

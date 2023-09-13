@@ -44,7 +44,7 @@ message MediaUpload {
 message CreateMediaRequest {
   string market_booth_id = 1;
   string name = 2;
-  MediaUpload data = 3;
+  optional MediaUpload data = 3;
 }
 
 message CreateMediaResponse {

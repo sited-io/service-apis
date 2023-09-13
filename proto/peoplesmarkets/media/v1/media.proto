@@ -91,7 +91,7 @@ message ListMediaResponse {
 message UpdateMediaRequest {
   string media_id = 1;
   optional string name = 2;
-  optional bytes data = 3;
+  optional MediaUpload data = 3;
 }
 
 message UpdateMediaResponse {

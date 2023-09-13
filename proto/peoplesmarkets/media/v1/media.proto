@@ -7,11 +7,14 @@ import "peoplesmarkets/pagination/v1/pagination.proto";
 
 service MediaService {
   rpc CreateMedia(CreateMediaRequest) returns (CreateMediaResponse);
-  rpc UploadMultipart(UploadMultipartRequest) returns (UploadMultipartResponse);
   rpc GetMedia(GetMediaRequest) returns (GetMediaResponse);
   rpc ListMedia(ListMediaRequest) returns (ListMediaResponse);
   rpc UpdateMedia(UpdateMediaRequest) returns (UpdateMediaResponse);
   rpc DeleteMedia(DeleteMediaRequest) returns (DeleteMediaResponse);
+
+  rpc InitiateMultipartUpload(InitiateMultipartUploadRequest) returns (InitiateMultipartUploadResponse);
+  rpc PutMultipartUpload(PutMultipartUploadRequest) returns (PutMultipartUploadResponse);
+  rpc CompleteMultipartUpload(CompleteMultipartUploadRequest) returns (CompleteMultipartUploadResponse);
 }
 
 message MediaResponse {
@@ -38,13 +41,6 @@ message MediaUpload {
   string data = 3;
 }
 
-message MultipartUpload {
-  uint32 part_number = 1;
-  uint32 total_parts = 2;
-  uint32 size_bytes = 3;
-  bytes chunk = 4;
-}
-
 message CreateMediaRequest {
   string market_booth_id = 1;
   string name = 2;
@@ -54,13 +50,6 @@ message CreateMediaRequest {
 message CreateMediaResponse {
   MediaResponse media = 1;
 }
-
-message UploadMultipartRequest {
-  string media_id = 1;
-  MultipartUpload multipart_upload = 2;
-}
-
-message UploadMultipartResponse {}
 
 message GetMediaRequest {
   string media_id = 1;
@@ -118,3 +107,38 @@ message DeleteMediaRequest {
 }
 
 message DeleteMediaResponse {}
+
+message InitiateMultipartUploadRequest {
+  string media_id = 1;
+  string content_type = 2;
+}
+
+message InitiateMultipartUploadResponse {
+  string key = 1;
+  string upload_id = 2;
+}
+
+message PutMultipartUploadRequest {
+  string media_id = 1;
+  string upload_id = 2;
+  uint32 part_number = 3;
+  string content_type = 4;
+  bytes chunk = 5;
+}
+
+message Part {
+  uint32 part_number = 1;
+  string etag = 2;
+}
+
+message PutMultipartUploadResponse {
+  Part part = 1;
+}
+
+message CompleteMultipartUploadRequest {
+  string media_id = 1;
+  string upload_id = 2;
+  repeated Part parts = 3;
+}
+
+message CompleteMultipartUploadResponse {}

@@ -7,6 +7,7 @@ import "peoplesmarkets/pagination/v1/pagination.proto";
 
 service MediaService {
   rpc CreateMedia(CreateMediaRequest) returns (CreateMediaResponse);
+  rpc UploadMultipart(UploadMultipartRequest) returns (UploadMultipartResponse);
   rpc GetMedia(GetMediaRequest) returns (GetMediaResponse);
   rpc ListMedia(ListMediaRequest) returns (ListMediaResponse);
   rpc UpdateMedia(UpdateMediaRequest) returns (UpdateMediaResponse);
@@ -37,6 +38,13 @@ message MediaUpload {
   string data = 3;
 }
 
+message MultipartUpload {
+  uint32 part_number = 1;
+  uint32 total_parts = 2;
+  uint32 size_bytes = 3;
+  bytes chunk = 4;
+}
+
 message CreateMediaRequest {
   string market_booth_id = 1;
   string name = 2;
@@ -46,6 +54,13 @@ message CreateMediaRequest {
 message CreateMediaResponse {
   MediaResponse media = 1;
 }
+
+message UploadMultipartRequest {
+  string media_id = 1;
+  MultipartUpload multipart_upload = 2;
+}
+
+message UploadMultipartResponse {}
 
 message GetMediaRequest {
   string media_id = 1;

@@ -122,8 +122,7 @@ message PutMultipartChunkRequest {
   string media_id = 1;
   string upload_id = 2;
   uint32 part_number = 3;
-  string content_type = 4;
-  bytes chunk = 5;
+  bytes chunk = 4;
 }
 
 message Part {

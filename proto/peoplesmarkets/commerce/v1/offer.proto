@@ -139,7 +139,7 @@ message PutPriceToOfferRequest {
 message PutPriceToOfferResponse {}
 
 message RemovePriceFromOfferRequest {
-  string offer_price_id = 1;
+  string offer_id = 1;
 }
 
 message RemovePriceFromOfferResponse {}

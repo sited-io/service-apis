@@ -32,10 +32,9 @@ message Recurring {
 }
 
 message Price {
-  string price_id = 1;
-  Currency currency = 2;
-  PriceType price_type = 3;
-  PriceBillingScheme billing_scheme = 4;
-  uint32 unit_amont = 5;
-  optional Recurring recurring = 6;
+  Currency currency = 1;
+  PriceType price_type = 2;
+  PriceBillingScheme billing_scheme = 3;
+  uint32 unit_amount = 4;
+  optional Recurring recurring = 5;
 }

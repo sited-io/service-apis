@@ -38,7 +38,7 @@ message MediaUpload {
 message CreateMediaRequest {
   string market_booth_id = 1;
   string name = 2;
-  optional MediaUpload data = 3;
+  optional MediaUpload file = 3;
 }
 
 message CreateMediaResponse {
@@ -89,7 +89,7 @@ message ListMediaResponse {
 message UpdateMediaRequest {
   string media_id = 1;
   optional string name = 2;
-  optional MediaUpload data = 3;
+  optional MediaUpload file = 3;
 }
 
 message UpdateMediaResponse {

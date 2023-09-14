@@ -10,11 +10,25 @@ enum Currency {
 enum PriceType {
   PRICE_TYPE_UNSPECIFIED = 0;
   PRICE_TYPE_ONE_TIME = 1;
+  PRICE_TYPE_RECURRING = 2;
 }
 
 enum PriceBillingScheme {
   PRICE_BILLING_SCHEME_UNSPECIFIED = 0;
   PRICE_BILLING_SCHEME_PER_UNIT = 1;
+}
+
+enum RecurringInterval {
+  RECURRING_INTERVAL_UNSPECIFIED = 0;
+  RECURRING_INTERVAL_DAY = 1;
+  RECURRING_INTERVAL_WEEK = 2;
+  RECURRING_INTERVAL_MONTH = 3;
+  RECURRING_INTERVAL_YEAR = 4;
+}
+
+message Recurring {
+  RecurringInterval interval = 1;
+  uint32 interval_count = 2;
 }
 
 message Price {
@@ -23,4 +37,5 @@ message Price {
   PriceType price_type = 3;
   PriceBillingScheme billing_scheme = 4;
   uint32 unit_amont = 5;
+  optional Recurring recurring = 6;
 }

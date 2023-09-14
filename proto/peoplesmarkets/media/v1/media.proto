@@ -30,15 +30,9 @@ message MediaResponse {
   optional bytes data = 8;
 }
 
-enum MediaUploadEncoding {
-  MEDIA_UPLOAD_ENCODING_UNSPECIFIED = 0;
-  MEDIA_UPLOAD_ENCODING_BASE64 = 1;
-}
-
 message MediaUpload {
-  string name = 1;
-  MediaUploadEncoding encoding = 2;
-  string data = 3;
+  string content_type = 1;
+  bytes data = 2;
 }
 
 message CreateMediaRequest {

@@ -15,6 +15,9 @@ service MediaService {
   rpc InitiateMultipartUpload(InitiateMultipartUploadRequest) returns (InitiateMultipartUploadResponse);
   rpc PutMultipartChunk(PutMultipartChunkRequest) returns (PutMultipartChunkResponse);
   rpc CompleteMultipartUpload(CompleteMultipartUploadRequest) returns (CompleteMultipartUploadResponse);
+
+  rpc AddMediaToOffer(AddMediaToOfferRequest) returns (AddMediaToOfferResponse);
+  rpc RemoveMediaFromOffer(RemoveMediaFromOfferRequest) returns (RemoveMediaFromOfferResponse);
 }
 
 message MediaResponse {
@@ -67,6 +70,7 @@ message MediaOrderBy {
 enum MediaFilterField {
   MEDIA_FILTER_FIELD_UNSPECIFIED = 0;
   MEDIA_FILTER_FIELD_NAME = 1;
+  MEDIA_FILTER_FIELD_OFFER_ID = 2;
 }
 
 message MediaFilter {
@@ -135,3 +139,17 @@ message CompleteMultipartUploadRequest {
 }
 
 message CompleteMultipartUploadResponse {}
+
+message AddMediaToOfferRequest {
+  string media_id = 1;
+  string offer_id = 2;
+}
+
+message AddMediaToOfferResponse {}
+
+message RemoveMediaFromOfferRequest {
+  string media_id = 1;
+  string offer_id = 2;
+}
+
+message RemoveMediaFromOfferResponse {}

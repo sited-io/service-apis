@@ -21,6 +21,13 @@ service OfferService {
   rpc RemovePriceFromOffer(RemovePriceFromOfferRequest) returns (RemovePriceFromOfferResponse);
 }
 
+enum OfferType {
+  OFFER_TYPE_UNSPECIFIED = 0;
+  OFFER_TYPE_PHYSICAL = 1;
+  OFFER_TYPE_DIGITAL = 2;
+  OFFER_TYPE_SERVICE = 3;
+}
+
 message OfferResponse {
   string offer_id = 1;
   string market_booth_id = 2;
@@ -36,6 +43,8 @@ message OfferResponse {
 
   repeated OfferImageResponse images = 10;
   optional Price price = 11;
+
+  OfferType type = 12;
 }
 
 message OfferImageResponse {
@@ -48,6 +57,7 @@ message CreateOfferRequest {
   string market_booth_id = 1;
   string name = 2;
   optional string description = 3;
+  OfferType type = 4;
 }
 
 message CreateOfferResponse {
@@ -80,6 +90,7 @@ enum OffersFilterField {
   OFFERS_FILTER_FIELD_NAME = 1;
   OFFERS_FILTER_FIELD_DESCRIPTION = 2;
   OFFERS_FILTER_FIELD_NAME_AND_DESCRIPTION = 3;
+  OFFERS_FILTER_FIELD_TYPE = 4;
 }
 
 message OffersFilter {
@@ -105,6 +116,7 @@ message UpdateOfferRequest {
   optional string name = 2;
   optional string description = 3;
   optional bool is_active = 4;
+  optional OfferType type = 5;
 }
 
 message UpdateOfferResponse {

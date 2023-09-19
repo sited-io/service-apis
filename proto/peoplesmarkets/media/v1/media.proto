@@ -9,6 +9,7 @@ service MediaService {
   rpc CreateMedia(CreateMediaRequest) returns (CreateMediaResponse);
   rpc GetMedia(GetMediaRequest) returns (GetMediaResponse);
   rpc ListMedia(ListMediaRequest) returns (ListMediaResponse);
+  rpc ListAccessibleMedia(ListAccessibleMediaRequest) returns (ListAccessibleMediaResponse);
   rpc UpdateMedia(UpdateMediaRequest) returns (UpdateMediaResponse);
   rpc DeleteMedia(DeleteMediaRequest) returns (DeleteMediaResponse);
 
@@ -86,6 +87,17 @@ message ListMediaRequest {
 }
 
 message ListMediaResponse {
+  repeated MediaResponse medias = 1;
+  peoplesmarkets.pagination.v1.Pagination pagination = 2;
+}
+
+message ListAccessibleMediaRequest {
+  optional peoplesmarkets.pagination.v1.Pagination pagination = 2;
+  optional MediaOrderBy order_by = 3;
+  optional MediaFilter filter = 4;
+}
+
+message ListAccessibleMediaResponse {
   repeated MediaResponse medias = 1;
   peoplesmarkets.pagination.v1.Pagination pagination = 2;
 }

@@ -8,6 +8,7 @@ import "peoplesmarkets/pagination/v1/pagination.proto";
 service MediaService {
   rpc CreateMedia(CreateMediaRequest) returns (CreateMediaResponse);
   rpc GetMedia(GetMediaRequest) returns (GetMediaResponse);
+  rpc DownloadMedia(DownloadMediaRequest) returns (DownloadMediaResponse);
   rpc ListMedia(ListMediaRequest) returns (ListMediaResponse);
   rpc ListAccessibleMedia(ListAccessibleMediaRequest) returns (ListAccessibleMediaResponse);
   rpc UpdateMedia(UpdateMediaRequest) returns (UpdateMediaResponse);
@@ -31,7 +32,6 @@ message MediaResponse {
   int64 updated_at = 6;
 
   string name = 7;
-  optional bytes data = 8;
 }
 
 message MediaUpload {
@@ -55,6 +55,14 @@ message GetMediaRequest {
 
 message GetMediaResponse {
   MediaResponse media = 1;
+}
+
+message DownloadMediaRequest {
+  string media_id = 1;
+}
+
+message DownloadMediaResponse {
+  string download_url = 1;
 }
 
 enum MediaOrderByField {

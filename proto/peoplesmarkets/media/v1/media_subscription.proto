@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package peoplesmarkets.media.v1;
+
+service MediaSubscriptionService {
+  rpc PutMediaSubscription(PutMediaSubscriptionRequest) returns (PutMediaSubscriptionResponse);
+}
+
+message PutMediaSubscriptionRequest {
+  string media_subscription_id = 1;
+  string buyer_user_id = 2;
+  string offer_id = 3;
+  uint64 current_period_start = 4;
+  uint64 current_period_end = 5;
+  string subscription_status = 6;
+  uint64 payed_at = 7;
+}
+
+message PutMediaSubscriptionResponse {}

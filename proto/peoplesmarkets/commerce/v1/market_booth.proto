@@ -9,6 +9,7 @@ import "peoplesmarkets/pagination/v1/pagination.proto";
 service MarketBoothService {
   rpc CreateMarketBooth(CreateMarketBoothRequest) returns (CreateMarketBoothResponse);
   rpc GetMarketBooth(GetMarketBoothRequest) returns (GetMarketBoothResponse);
+  rpc GetShopBySlug(GetShopBySlugRequest) returns (GetShopBySlugResponse);
   rpc ListMarketBooths(ListMarketBoothsRequest) returns (ListMarketBoothsResponse);
   rpc UpdateMarketBooth(UpdateMarketBoothRequest) returns (UpdateMarketBoothResponse);
   rpc DeleteMarketBooth(DeleteMarketBoothRequest) returns (DeleteMarketBoothResponse);
@@ -30,6 +31,8 @@ message MarketBoothResponse {
 
   uint32 platform_fee_percent = 8;
   uint32 minimum_platform_fee_cent = 9;
+
+  string slug = 10;
 }
 
 message CreateMarketBoothRequest {
@@ -37,6 +40,7 @@ message CreateMarketBoothRequest {
   optional string description = 2;
   optional uint32 platform_fee_percent = 3;
   optional uint32 minimum_platform_fee_cent = 4;
+  string slug = 5;
 }
 
 message CreateMarketBoothResponse {
@@ -48,6 +52,14 @@ message GetMarketBoothRequest {
 }
 
 message GetMarketBoothResponse {
+  MarketBoothResponse market_booth = 1;
+}
+
+message GetShopBySlugRequest {
+  string slug = 1;
+}
+
+message GetShopBySlugResponse {
   MarketBoothResponse market_booth = 1;
 }
 
@@ -94,6 +106,7 @@ message UpdateMarketBoothRequest {
   optional string description = 3;
   optional uint32 platform_fee_percent = 4;
   optional uint32 minimum_platform_fee_cent = 5;
+  optional string slug = 6;
 }
 
 message UpdateMarketBoothResponse {

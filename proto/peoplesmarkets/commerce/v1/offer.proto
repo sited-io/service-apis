@@ -47,6 +47,7 @@ message OfferResponse {
   OfferType type = 12;
 
   bool is_featured = 13;
+  string shop_slug = 14;
 }
 
 message OfferImageResponse {

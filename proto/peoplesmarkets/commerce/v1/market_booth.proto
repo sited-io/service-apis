@@ -2,7 +2,6 @@ syntax = "proto3";
 
 package peoplesmarkets.commerce.v1;
 
-import "peoplesmarkets/media/v1/media.proto";
 import "peoplesmarkets/ordering/v1/ordering.proto";
 import "peoplesmarkets/pagination/v1/pagination.proto";
 
@@ -13,9 +12,6 @@ service MarketBoothService {
   rpc ListMarketBooths(ListMarketBoothsRequest) returns (ListMarketBoothsResponse);
   rpc UpdateMarketBooth(UpdateMarketBoothRequest) returns (UpdateMarketBoothResponse);
   rpc DeleteMarketBooth(DeleteMarketBoothRequest) returns (DeleteMarketBoothResponse);
-
-  rpc UpdateImageOfMarketBooth(UpdateImageOfMarketBoothRequest) returns (UpdateImageOfMarketBoothResponse);
-  rpc RemoveImageFromMarketBooth(RemoveImageFromMarketBoothRequest) returns (RemoveImageFromMarketBoothResponse);
 }
 
 message MarketBoothResponse {
@@ -26,21 +22,19 @@ message MarketBoothResponse {
   int64 updated_at = 4;
 
   string name = 5;
-  optional string description = 6;
-  optional string image_url = 7;
+  string slug = 6;
+  optional string description = 7;
 
   uint32 platform_fee_percent = 8;
   uint32 minimum_platform_fee_cent = 9;
-
-  string slug = 10;
 }
 
 message CreateMarketBoothRequest {
   string name = 1;
-  optional string description = 2;
-  optional uint32 platform_fee_percent = 3;
-  optional uint32 minimum_platform_fee_cent = 4;
-  string slug = 5;
+  string slug = 2;
+  optional string description = 3;
+  optional uint32 platform_fee_percent = 4;
+  optional uint32 minimum_platform_fee_cent = 5;
 }
 
 message CreateMarketBoothResponse {
@@ -103,10 +97,10 @@ message ListMarketBoothsResponse {
 message UpdateMarketBoothRequest {
   string market_booth_id = 1;
   optional string name = 2;
-  optional string description = 3;
-  optional uint32 platform_fee_percent = 4;
-  optional uint32 minimum_platform_fee_cent = 5;
-  optional string slug = 6;
+  optional string slug = 3;
+  optional string description = 4;
+  optional uint32 platform_fee_percent = 5;
+  optional uint32 minimum_platform_fee_cent = 6;
 }
 
 message UpdateMarketBoothResponse {
@@ -118,16 +112,3 @@ message DeleteMarketBoothRequest {
 }
 
 message DeleteMarketBoothResponse {}
-
-message UpdateImageOfMarketBoothRequest {
-  string market_booth_id = 1;
-  peoplesmarkets.media.v1.MediaUpload image = 2;
-}
-
-message UpdateImageOfMarketBoothResponse {}
-
-message RemoveImageFromMarketBoothRequest {
-  string market_booth_id = 1;
-}
-
-message RemoveImageFromMarketBoothResponse {}

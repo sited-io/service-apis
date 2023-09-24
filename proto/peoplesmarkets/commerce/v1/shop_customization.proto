@@ -1,0 +1,94 @@
+syntax = "proto3";
+
+package peoplesmarkets.commerce.v1;
+
+import "peoplesmarkets/media/v1/media.proto";
+
+service ShopCustomizationService {
+  rpc PutShopCustomization(PutShopCustomizationRequest) returns (PutShopCustomizationResponse);
+  rpc GetShopCustomization(GetShopCustomizationRequest) returns (GetShopCustomizationResponse);
+  rpc DeleteShopCustomization(DeleteShopCustomizationRequest) returns (DeleteShopCustomizationResponse);
+
+  rpc PutBannerImageToShop(PutBannerImageToShopRequest) returns (PutBannerImageToShopResponse);
+  rpc RemoveBannerImageFromShop(RemoveBannerImageFromShopRequest) returns (RemoveBannerImageFromShopResponse);
+
+  rpc PutLogoImageToShop(PutLogoImageToShopRequest) returns (PutLogoImageToShopResponse);
+  rpc RemoveLogoImageFromShop(RemoveLogoImageFromShopRequest) returns (RemoveLogoImageFromShopResponse);
+}
+
+message ShopCustomizationResponse {
+  string shop_id = 1;
+  string user_id = 2;
+
+  uint64 created_at = 3;
+  uint64 updated_at = 4;
+
+  optional string logo_image_url = 5;
+
+  optional string banner_image_url = 6;
+
+  optional string header_background_color_light = 7;
+  optional string header_background_color_dark = 8;
+  optional string header_content_color_light = 9;
+  optional string header_content_color_dark = 10;
+  optional string secondary_background_color_light = 11;
+  optional string secondary_background_color_dark = 12;
+  optional string secondary_content_color_light = 13;
+  optional string secondary_content_color_dark = 14;
+}
+
+message PutShopCustomizationRequest {
+  string shop_id = 1;
+  optional string header_background_color_light = 2;
+  optional string header_background_color_dark = 3;
+  optional string header_content_color_light = 4;
+  optional string header_content_color_dark = 5;
+  optional string secondary_background_color_light = 6;
+  optional string secondary_background_color_dark = 7;
+  optional string secondary_content_color_light = 8;
+  optional string secondary_content_color_dark = 9;
+}
+
+message PutShopCustomizationResponse {
+  ShopCustomizationResponse shop_customization = 1;
+}
+
+message GetShopCustomizationRequest {
+  string shop_id = 1;
+}
+
+message GetShopCustomizationResponse {
+  ShopCustomizationResponse shop_customization = 1;
+}
+
+message DeleteShopCustomizationRequest {
+  string shop_id = 1;
+}
+
+message DeleteShopCustomizationResponse {}
+
+message PutBannerImageToShopRequest {
+  string shop_id = 1;
+  peoplesmarkets.media.v1.MediaUpload image = 2;
+}
+
+message PutBannerImageToShopResponse {}
+
+message RemoveBannerImageFromShopRequest {
+  string shop_id = 1;
+}
+
+message RemoveBannerImageFromShopResponse {}
+
+message PutLogoImageToShopRequest {
+  string shop_id = 1;
+  peoplesmarkets.media.v1.MediaUpload image = 2;
+}
+
+message PutLogoImageToShopResponse {}
+
+message RemoveLogoImageFromShopRequest {
+  string shop_id = 1;
+}
+
+message RemoveLogoImageFromShopResponse {}

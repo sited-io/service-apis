@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package peoplesmarkets.commerce.v1;
 
+import "peoplesmarkets/commerce/v1/shop_customization.proto";
 import "peoplesmarkets/ordering/v1/ordering.proto";
 import "peoplesmarkets/pagination/v1/pagination.proto";
 
@@ -9,7 +10,7 @@ service MarketBoothService {
   rpc CreateMarketBooth(CreateMarketBoothRequest) returns (CreateMarketBoothResponse);
   rpc GetMarketBooth(GetMarketBoothRequest) returns (GetMarketBoothResponse);
   rpc GetShopBySlug(GetShopBySlugRequest) returns (GetShopBySlugResponse);
-  rpc ListMarketBooths(ListMarketBoothsRequest) returns (ListMarketBoothsResponse);
+  rpc ListShops(ListShopsRequest) returns (ListShopsResponse);
   rpc UpdateMarketBooth(UpdateMarketBoothRequest) returns (UpdateMarketBoothResponse);
   rpc DeleteMarketBooth(DeleteMarketBoothRequest) returns (DeleteMarketBoothResponse);
 }
@@ -27,6 +28,8 @@ message MarketBoothResponse {
 
   uint32 platform_fee_percent = 8;
   uint32 minimum_platform_fee_cent = 9;
+
+  optional ShopCustomizationResponse customization = 10;
 }
 
 message CreateMarketBoothRequest {
@@ -43,6 +46,7 @@ message CreateMarketBoothResponse {
 
 message GetMarketBoothRequest {
   string market_booth_id = 1;
+  optional bool extended = 2;
 }
 
 message GetMarketBoothResponse {
@@ -82,14 +86,15 @@ message MarketBoothsFilter {
   string query = 2;
 }
 
-message ListMarketBoothsRequest {
+message ListShopsRequest {
   optional string user_id = 1;
   optional peoplesmarkets.pagination.v1.Pagination pagination = 2;
   optional MarketBoothsOrderBy order_by = 3;
   optional MarketBoothsFilter filter = 4;
+  optional bool extended = 5;
 }
 
-message ListMarketBoothsResponse {
+message ListShopsResponse {
   repeated MarketBoothResponse market_booths = 1;
   peoplesmarkets.pagination.v1.Pagination pagination = 2;
 }

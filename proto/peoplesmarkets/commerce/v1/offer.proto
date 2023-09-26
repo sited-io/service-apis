@@ -48,6 +48,7 @@ message OfferResponse {
 
   bool is_featured = 13;
   string shop_slug = 14;
+  optional string shop_domain = 15;
 }
 
 message OfferImageResponse {

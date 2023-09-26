@@ -10,6 +10,7 @@ service MarketBoothService {
   rpc CreateMarketBooth(CreateMarketBoothRequest) returns (CreateMarketBoothResponse);
   rpc GetMarketBooth(GetMarketBoothRequest) returns (GetMarketBoothResponse);
   rpc GetShopBySlug(GetShopBySlugRequest) returns (GetShopBySlugResponse);
+  rpc GetShopByDomain(GetShopByDomainRequest) returns (GetShopByDomainResponse);
   rpc ListShops(ListShopsRequest) returns (ListShopsResponse);
   rpc UpdateMarketBooth(UpdateMarketBoothRequest) returns (UpdateMarketBoothResponse);
   rpc DeleteMarketBooth(DeleteMarketBoothRequest) returns (DeleteMarketBoothResponse);
@@ -30,6 +31,8 @@ message MarketBoothResponse {
   uint32 minimum_platform_fee_cent = 9;
 
   optional ShopCustomizationResponse customization = 10;
+
+  optional string domain = 11;
 }
 
 message CreateMarketBoothRequest {
@@ -58,6 +61,14 @@ message GetShopBySlugRequest {
 }
 
 message GetShopBySlugResponse {
+  MarketBoothResponse market_booth = 1;
+}
+
+message GetShopByDomainRequest {
+  string domain = 1;
+}
+
+message GetShopByDomainResponse {
   MarketBoothResponse market_booth = 1;
 }
 

@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package peoplesmarkets.commerce.v1;
+
+service ShopDomainService {
+  rpc AddDomainToShop(AddDomainToShopRequest) returns (AddDomainToShopResponse);
+  rpc GetDomainStatus(GetDomainStatusRequest) returns (GetDomainStatusResponse);
+  rpc UpdateDomainStatus(UpdateDomainStatusRequest) returns (UpdateDomainStatusResponse);
+  rpc RemoveDomainFromShop(RemoveDomainFromShopRequest) returns (RemoveDomainFromShopResponse);
+}
+
+enum DomainStatus {
+  DOMAIN_STATUS_UNSPECIFIED = 0;
+  DOMAIN_STATUS_PENDING = 1;
+  DOMAIN_STATUS_ACTIVE = 2;
+}
+
+message DomainStatusResponse {
+  string shop_id = 1;
+  string domain = 2;
+  DomainStatus status = 3;
+}
+
+message AddDomainToShopRequest {
+  string shop_id = 1;
+  string domain = 2;
+}
+
+message AddDomainToShopResponse {}
+
+message GetDomainStatusRequest {
+  string shop_id = 1;
+}
+
+message GetDomainStatusResponse {
+  DomainStatusResponse status = 1;
+}
+
+message UpdateDomainStatusRequest {
+  string shop_id = 1;
+  string domain = 2;
+  string status = 3;
+}
+
+message UpdateDomainStatusResponse {}
+
+message RemoveDomainFromShopRequest {
+  string shop_id = 1;
+  string domain = 2;
+}
+
+message RemoveDomainFromShopResponse {}

@@ -23,18 +23,22 @@ message ShopCustomizationResponse {
   uint64 created_at = 3;
   uint64 updated_at = 4;
 
-  optional string logo_image_url = 5;
+  optional string logo_image_light_url = 5;
+  optional string logo_image_dark_url = 6;
 
-  optional string banner_image_url = 6;
+  optional string banner_image_light_url = 7;
+  optional string banner_image_dark_url = 8;
+  optional bool show_banner_in_listing = 9;
+  optional bool show_banner_on_home = 10;
 
-  optional string header_background_color_light = 7;
-  optional string header_background_color_dark = 8;
-  optional string header_content_color_light = 9;
-  optional string header_content_color_dark = 10;
-  optional string secondary_background_color_light = 11;
-  optional string secondary_background_color_dark = 12;
-  optional string secondary_content_color_light = 13;
-  optional string secondary_content_color_dark = 14;
+  optional string header_background_color_light = 11;
+  optional string header_background_color_dark = 12;
+  optional string header_content_color_light = 13;
+  optional string header_content_color_dark = 14;
+  optional string secondary_background_color_light = 15;
+  optional string secondary_background_color_dark = 16;
+  optional string secondary_content_color_light = 17;
+  optional string secondary_content_color_dark = 18;
 }
 
 message PutShopCustomizationRequest {
@@ -70,6 +74,9 @@ message DeleteShopCustomizationResponse {}
 message PutBannerImageToShopRequest {
   string shop_id = 1;
   peoplesmarkets.media.v1.MediaUpload image = 2;
+  optional peoplesmarkets.media.v1.MediaUpload image_dark = 3;
+  optional bool show_in_listing = 4;
+  optional bool show_on_home = 5;
 }
 
 message PutBannerImageToShopResponse {}
@@ -83,6 +90,7 @@ message RemoveBannerImageFromShopResponse {}
 message PutLogoImageToShopRequest {
   string shop_id = 1;
   peoplesmarkets.media.v1.MediaUpload image = 2;
+  optional peoplesmarkets.media.v1.MediaUpload image_dark = 3;
 }
 
 message PutLogoImageToShopResponse {}

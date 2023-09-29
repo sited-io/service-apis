@@ -30,25 +30,23 @@ enum OfferType {
 
 message OfferResponse {
   string offer_id = 1;
-  string market_booth_id = 2;
-  string market_booth_name = 3;
-  string user_id = 4;
+  string shop_id = 2;
+  string shop_name = 3;
+  string shop_slug = 4;
+  optional string shop_domain = 5;
+  string user_id = 6;
 
-  int64 created_at = 5;
-  int64 updated_at = 6;
+  int64 created_at = 7;
+  int64 updated_at = 8;
 
-  string name = 7;
-  string description = 8;
-  bool is_active = 9;
+  string name = 9;
+  string description = 10;
+  bool is_active = 11;
+  bool is_featured = 12;
+  OfferType type = 13;
 
-  repeated OfferImageResponse images = 10;
-  optional Price price = 11;
-
-  OfferType type = 12;
-
-  bool is_featured = 13;
-  string shop_slug = 14;
-  optional string shop_domain = 15;
+  repeated OfferImageResponse images = 14;
+  optional Price price = 15;
 }
 
 message OfferImageResponse {
@@ -58,7 +56,7 @@ message OfferImageResponse {
 }
 
 message CreateOfferRequest {
-  string market_booth_id = 1;
+  string shop_id = 1;
   string name = 2;
   optional string description = 3;
   OfferType type = 4;
@@ -106,7 +104,7 @@ message OffersFilter {
 
 message ListOffersRequest {
   optional string user_id = 1;
-  optional string market_booth_id = 2;
+  optional string shop_id = 2;
   optional peoplesmarkets.pagination.v1.Pagination pagination = 3;
   optional OffersOrderBy order_by = 4;
   optional OffersFilter filter = 5;

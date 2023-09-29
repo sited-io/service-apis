@@ -11,7 +11,7 @@ service StripeService {
 }
 
 message StripeAccount {
-  string market_booth_id = 1;
+  string shop_id = 1;
   string stripe_account_id = 2;
   bool enabled = 3;
 }
@@ -22,7 +22,7 @@ message StripeAccountDetails {
 }
 
 message CreateAccountRequest {
-  string market_booth_id = 1;
+  string shop_id = 1;
 }
 
 message CreateAccountResponse {
@@ -30,7 +30,7 @@ message CreateAccountResponse {
 }
 
 message CreateAccountLinkRequest {
-  string market_booth_id = 1;
+  string shop_id = 1;
   string refresh_url = 2;
   string return_url = 3;
 }
@@ -40,7 +40,7 @@ message CreateAccountLinkResponse {
 }
 
 message GetAccountRequest {
-  string market_booth_id = 1;
+  string shop_id = 1;
 }
 
 message GetAccountResponse {
@@ -48,7 +48,7 @@ message GetAccountResponse {
 }
 
 message GetAccountDetailsRequest {
-  string market_booth_id = 1;
+  string shop_id = 1;
 }
 
 message GetAccountDetailsResponse {

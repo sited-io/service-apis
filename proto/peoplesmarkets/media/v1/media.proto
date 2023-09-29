@@ -25,7 +25,7 @@ service MediaService {
 message MediaResponse {
   string media_id = 1;
   repeated string offer_ids = 2;
-  string market_booth_id = 3;
+  string shop_id = 3;
   string user_id = 4;
 
   int64 created_at = 5;
@@ -40,7 +40,7 @@ message MediaUpload {
 }
 
 message CreateMediaRequest {
-  string market_booth_id = 1;
+  string shop_id = 1;
   string name = 2;
   optional MediaUpload file = 3;
 }
@@ -88,7 +88,7 @@ message MediaFilter {
 }
 
 message ListMediaRequest {
-  string market_booth_id = 1;
+  string shop_id = 1;
   optional peoplesmarkets.pagination.v1.Pagination pagination = 2;
   optional MediaOrderBy order_by = 3;
   optional MediaFilter filter = 4;

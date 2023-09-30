@@ -29,6 +29,7 @@ enum RecurringInterval {
 message Recurring {
   RecurringInterval interval = 1;
   uint32 interval_count = 2;
+  optional uint32 trial_period_days = 3;
 }
 
 message Price {

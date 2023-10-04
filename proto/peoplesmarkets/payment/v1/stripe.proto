@@ -9,6 +9,7 @@ service StripeService {
   rpc GetAccountDetails(GetAccountDetailsRequest) returns (GetAccountDetailsResponse);
   rpc CreateCheckoutSession(CreateCheckoutSessionRequest) returns (CreateCheckoutSessionResponse);
   rpc CancelSubscription(CancelSubscriptionRequest) returns (CancelSubscriptionResponse);
+  rpc ResumeSubscription(ResumeSubscriptionRequest) returns (ResumeSubscriptionResponse);
 }
 
 message StripeAccount {
@@ -72,3 +73,9 @@ message CancelSubscriptionRequest {
 }
 
 message CancelSubscriptionResponse {}
+
+message ResumeSubscriptionRequest {
+  string stripe_subscription_id = 1;
+}
+
+message ResumeSubscriptionResponse {}

@@ -2,8 +2,25 @@ syntax = "proto3";
 
 package peoplesmarkets.media.v1;
 
+import "peoplesmarkets/pagination/v1/pagination.proto";
+
 service MediaSubscriptionService {
   rpc PutMediaSubscription(PutMediaSubscriptionRequest) returns (PutMediaSubscriptionResponse);
+  rpc GetMediaSubscription(GetMediaSubscriptionRequest) returns (GetMediaSubscriptionResponse);
+  rpc ListMediaSubscriptions(ListMediaSubscriptionsRequest) returns (ListMediaSubscriptionsResponse);
+}
+
+message MediaSubscriptionResponse {
+  string media_subscription_id = 1;
+  string buyer_user_id = 2;
+  string shop_id = 4;
+  string offer_id = 5;
+  uint64 current_period_start = 6;
+  uint64 current_period_end = 7;
+  string subscription_status = 8;
+  uint64 payed_at = 9;
+  uint64 payed_until = 10;
+  optional string stripe_subscription_id = 11;
 }
 
 message PutMediaSubscriptionRequest {
@@ -15,6 +32,27 @@ message PutMediaSubscriptionRequest {
   string subscription_status = 6;
   uint64 payed_at = 7;
   uint64 payed_until = 8;
+  string shop_id = 9;
+  optional string stripe_subscription_id = 10;
 }
 
 message PutMediaSubscriptionResponse {}
+
+message GetMediaSubscriptionRequest {
+  optional string media_subscription_id = 1;
+  optional string offer_id = 2;
+}
+
+message GetMediaSubscriptionResponse {
+  MediaSubscriptionResponse media_subscription = 1;
+}
+
+message ListMediaSubscriptionsRequest {
+  optional string shop_id = 1;
+  optional peoplesmarkets.pagination.v1.Pagination pagination = 2;
+}
+
+message ListMediaSubscriptionsResponse {
+  repeated MediaSubscriptionResponse media_subscriptions = 1;
+  peoplesmarkets.pagination.v1.Pagination pagination = 2;
+}

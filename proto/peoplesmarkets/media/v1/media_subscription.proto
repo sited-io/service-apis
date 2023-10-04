@@ -8,6 +8,8 @@ service MediaSubscriptionService {
   rpc PutMediaSubscription(PutMediaSubscriptionRequest) returns (PutMediaSubscriptionResponse);
   rpc GetMediaSubscription(GetMediaSubscriptionRequest) returns (GetMediaSubscriptionResponse);
   rpc ListMediaSubscriptions(ListMediaSubscriptionsRequest) returns (ListMediaSubscriptionsResponse);
+  rpc CancelMediaSubscription(CancelMediaSubscriptionRequest) returns (CancelMediaSubscriptionResponse);
+  rpc ResumeMediaSubscription(ResumeMediaSubscriptionRequest) returns (ResumeMediaSubscriptionResponse);
 }
 
 message MediaSubscriptionResponse {
@@ -56,3 +58,15 @@ message ListMediaSubscriptionsResponse {
   repeated MediaSubscriptionResponse media_subscriptions = 1;
   peoplesmarkets.pagination.v1.Pagination pagination = 2;
 }
+
+message CancelMediaSubscriptionRequest {
+  string media_subscription_id = 1;
+}
+
+message CancelMediaSubscriptionResponse {}
+
+message ResumeMediaSubscriptionRequest {
+  string media_subscription_id = 1;
+}
+
+message ResumeMediaSubscriptionResponse {}

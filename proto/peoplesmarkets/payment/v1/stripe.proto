@@ -70,12 +70,14 @@ message CreateCheckoutSessionResponse {
 
 message CancelSubscriptionRequest {
   string stripe_subscription_id = 1;
+  string shop_id = 2;
 }
 
 message CancelSubscriptionResponse {}
 
 message ResumeSubscriptionRequest {
   string stripe_subscription_id = 1;
+  string shop_id = 2;
 }
 
 message ResumeSubscriptionResponse {}

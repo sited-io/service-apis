@@ -2,7 +2,19 @@ syntax = "proto3";
 
 package peoplesmarkets.pagination.v1;
 
+// deprecate in favor of PaginationRequest/PaginationResponse
 message Pagination {
   uint64 page = 1;
   uint64 size = 2;
+}
+
+message PaginationRequest {
+  uint32 page = 1;
+  uint32 size = 2;
+}
+
+message PaginationResponse {
+  uint32 page = 1;
+  uint32 size = 2;
+  uint32 total_elements = 3;
 }

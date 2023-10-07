@@ -3,6 +3,7 @@ syntax = "proto3";
 package peoplesmarkets.commerce.v1;
 
 import "peoplesmarkets/commerce/v1/price.proto";
+import "peoplesmarkets/ordering/v1/ordering.proto";
 import "peoplesmarkets/pagination/v1/pagination.proto";
 
 service ShippingRateService {
@@ -29,9 +30,20 @@ message AddShippingRateToOfferRequest {
 
 message AddShippingRateToOfferResponse {}
 
+enum ShippingRatesOrderByField {
+  SHIPPING_RATES_ORDER_BY_FIELD_UNSPECIFIED = 0;
+  SHIPPING_RATES_ORDER_BY_FIELD_COUNTRY = 1;
+}
+
+message ShippingRatesOrderBy {
+  ShippingRatesOrderByField field = 1;
+  peoplesmarkets.ordering.v1.Direction direction = 2;
+}
+
 message ListShippingRatesRequest {
   string offer_id = 1;
-  peoplesmarkets.pagination.v1.PaginationRequest pagination = 2;
+  optional peoplesmarkets.pagination.v1.PaginationRequest pagination = 2;
+  optional ShippingRatesOrderBy order_by = 3;
 }
 
 message ListShippingRatesResponse {

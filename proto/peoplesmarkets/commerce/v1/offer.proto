@@ -20,9 +20,6 @@ service OfferService {
 
   rpc PutPriceToOffer(PutPriceToOfferRequest) returns (PutPriceToOfferResponse);
   rpc RemovePriceFromOffer(RemovePriceFromOfferRequest) returns (RemovePriceFromOfferResponse);
-
-  rpc PutShippingRateToOffer(PutShippingRateToOfferRequest) returns (PutShippingRateToOfferResponse);
-  rpc RemoveShippingRateFromOffer(RemoveShippingRateFromOfferRequest) returns (RemoveShippingRateFromOfferResponse);
 }
 
 enum OfferType {
@@ -51,7 +48,7 @@ message OfferResponse {
 
   repeated OfferImageResponse images = 14;
   optional Price price = 15;
-  optional ShippingRate shipping_rate = 16;
+  optional ShippingRateResponse shipping_rate = 16;
 }
 
 message OfferImageResponse {
@@ -165,16 +162,3 @@ message RemovePriceFromOfferRequest {
 }
 
 message RemovePriceFromOfferResponse {}
-
-message PutShippingRateToOfferRequest {
-  string offer_id = 1;
-}
-
-message PutShippingRateToOfferResponse {}
-
-message RemoveShippingRateFromOfferRequest {
-  string offer_id = 1;
-  ShippingRate shipping_rate = 2;
-}
-
-message RemoveShippingRateFromOfferResponse {}

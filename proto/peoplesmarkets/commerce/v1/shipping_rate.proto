@@ -4,12 +4,45 @@ package peoplesmarkets.commerce.v1;
 
 import "peoplesmarkets/commerce/v1/price.proto";
 
-message ShippingRate {
-  uint32 amount = 1;
-  Currency currency = 2;
-  bool all_countries = 3;
-  repeated ShippingCountry specific_countries = 4;
+service ShippingRateService {
+  rpc CreateShippingRate(CreateShippingRateRequest) returns (CreateShippingRateResponse);
+  rpc GetShippingRate(GetShippingRateRequest) returns (GetShippingRateResponse);
+  rpc DeleteShippingRate(DeleteShippingRateRequest) returns (DeleteShippingRateResponse);
 }
+
+message ShippingRateResponse {
+  string shipping_rate_id = 1;
+  string offer_id = 2;
+  string user_id = 3;
+  uint32 amount = 4;
+  Currency currency = 5;
+  bool all_countries = 6;
+  repeated ShippingCountry specific_countries = 7;
+}
+
+message CreateShippingRateRequest {
+  string offer_id = 1;
+  uint32 amount = 2;
+  Currency currency = 3;
+  bool all_countries = 4;
+  repeated ShippingCountry specific_countries = 5;
+}
+
+message CreateShippingRateResponse {}
+
+message GetShippingRateRequest {
+  optional string offer_id = 1;
+}
+
+message GetShippingRateResponse {
+  ShippingRateResponse shipping_rate = 1;
+}
+
+message DeleteShippingRateRequest {
+  string shipping_rate_id = 1;
+}
+
+message DeleteShippingRateResponse {}
 
 enum ShippingCountry {
   SHIPPING_COUNTRY_UNSPECIFIED = 0;

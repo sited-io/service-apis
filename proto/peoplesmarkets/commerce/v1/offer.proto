@@ -51,6 +51,7 @@ message OfferResponse {
 
   repeated OfferImageResponse images = 14;
   optional Price price = 15;
+  optional ShippingRate shipping_rate = 16;
 }
 
 message OfferImageResponse {

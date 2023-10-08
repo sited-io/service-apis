@@ -5,7 +5,7 @@ package peoplesmarkets.commerce.v1;
 import "peoplesmarkets/commerce/v1/price.proto";
 
 service ShippingRateService {
-  rpc CreateShippingRate(CreateShippingRateRequest) returns (CreateShippingRateResponse);
+  rpc PutShippingRate(PutShippingRateRequest) returns (PutShippingRateResponse);
   rpc GetShippingRate(GetShippingRateRequest) returns (GetShippingRateResponse);
   rpc DeleteShippingRate(DeleteShippingRateRequest) returns (DeleteShippingRateResponse);
 }
@@ -20,7 +20,7 @@ message ShippingRateResponse {
   repeated ShippingCountry specific_countries = 7;
 }
 
-message CreateShippingRateRequest {
+message PutShippingRateRequest {
   string offer_id = 1;
   uint32 amount = 2;
   Currency currency = 3;
@@ -28,7 +28,7 @@ message CreateShippingRateRequest {
   repeated ShippingCountry specific_countries = 5;
 }
 
-message CreateShippingRateResponse {}
+message PutShippingRateResponse {}
 
 message GetShippingRateRequest {
   optional string offer_id = 1;

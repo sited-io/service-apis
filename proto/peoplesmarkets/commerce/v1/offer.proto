@@ -3,6 +3,7 @@ syntax = "proto3";
 package peoplesmarkets.commerce.v1;
 
 import "peoplesmarkets/commerce/v1/price.proto";
+import "peoplesmarkets/commerce/v1/shipping_rate.proto";
 import "peoplesmarkets/media/v1/media.proto";
 import "peoplesmarkets/ordering/v1/ordering.proto";
 import "peoplesmarkets/pagination/v1/pagination.proto";
@@ -19,6 +20,9 @@ service OfferService {
 
   rpc PutPriceToOffer(PutPriceToOfferRequest) returns (PutPriceToOfferResponse);
   rpc RemovePriceFromOffer(RemovePriceFromOfferRequest) returns (RemovePriceFromOfferResponse);
+
+  rpc PutShippingRateToOffer(PutShippingRateToOfferRequest) returns (PutShippingRateToOfferResponse);
+  rpc RemoveShippingRateFromOffer(RemoveShippingRateFromOfferRequest) returns (RemoveShippingRateFromOfferResponse);
 }
 
 enum OfferType {
@@ -160,3 +164,16 @@ message RemovePriceFromOfferRequest {
 }
 
 message RemovePriceFromOfferResponse {}
+
+message PutShippingRateToOfferRequest {
+  string offer_id = 1;
+}
+
+message PutShippingRateToOfferResponse {}
+
+message RemoveShippingRateFromOfferRequest {
+  string offer_id = 1;
+  ShippingRate shipping_rate = 2;
+}
+
+message RemoveShippingRateFromOfferResponse {}

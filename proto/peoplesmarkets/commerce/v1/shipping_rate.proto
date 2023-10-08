@@ -3,60 +3,12 @@ syntax = "proto3";
 package peoplesmarkets.commerce.v1;
 
 import "peoplesmarkets/commerce/v1/price.proto";
-import "peoplesmarkets/ordering/v1/ordering.proto";
-import "peoplesmarkets/pagination/v1/pagination.proto";
 
-service ShippingRateService {
-  rpc AddShippingRateToOffer(AddShippingRateToOfferRequest) returns (AddShippingRateToOfferResponse);
-  rpc ListShippingRates(ListShippingRatesRequest) returns (ListShippingRatesResponse);
-  rpc RemoveShippingRateFromOffer(RemoveShippingRateFromOfferRequest) returns (RemoveShippingRateFromOfferResponse);
+message ShippingRate {
+  repeated ShippingCountry countries = 1;
+  uint32 amount = 2;
+  Currency currency = 3;
 }
-
-message ShippingRateResponse {
-  string shipping_rate_id = 1;
-  string offer_id = 2;
-  string user_id = 3;
-  ShippingCountry country = 4;
-  uint32 amount = 5;
-  Currency currency = 6;
-}
-
-message AddShippingRateToOfferRequest {
-  string offer_id = 1;
-  ShippingCountry country = 2;
-  uint32 amount = 3;
-  Currency currency = 4;
-}
-
-message AddShippingRateToOfferResponse {}
-
-enum ShippingRatesOrderByField {
-  SHIPPING_RATES_ORDER_BY_FIELD_UNSPECIFIED = 0;
-  SHIPPING_RATES_ORDER_BY_FIELD_COUNTRY = 1;
-}
-
-message ShippingRatesOrderBy {
-  ShippingRatesOrderByField field = 1;
-  peoplesmarkets.ordering.v1.Direction direction = 2;
-}
-
-message ListShippingRatesRequest {
-  string offer_id = 1;
-  optional peoplesmarkets.pagination.v1.PaginationRequest pagination = 2;
-  optional ShippingRatesOrderBy order_by = 3;
-}
-
-message ListShippingRatesResponse {
-  repeated ShippingRateResponse shipping_rates = 1;
-  peoplesmarkets.pagination.v1.PaginationResponse pagination = 2;
-}
-
-message RemoveShippingRateFromOfferRequest {
-  string offer_id = 1;
-  string shipping_rate_id = 2;
-}
-
-message RemoveShippingRateFromOfferResponse {}
 
 enum ShippingCountry {
   SHIPPING_COUNTRY_UNSPECIFIED = 0;

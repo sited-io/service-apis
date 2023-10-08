@@ -3,7 +3,6 @@ syntax = "proto3";
 package peoplesmarkets.commerce.v1;
 
 import "peoplesmarkets/commerce/v1/price.proto";
-import "peoplesmarkets/commerce/v1/shipping_rate.proto";
 import "peoplesmarkets/media/v1/media.proto";
 import "peoplesmarkets/ordering/v1/ordering.proto";
 import "peoplesmarkets/pagination/v1/pagination.proto";
@@ -48,7 +47,6 @@ message OfferResponse {
 
   repeated OfferImageResponse images = 14;
   optional Price price = 15;
-  optional ShippingRateResponse shipping_rate = 16;
 }
 
 message OfferImageResponse {

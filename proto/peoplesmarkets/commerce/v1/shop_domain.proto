@@ -5,6 +5,7 @@ package peoplesmarkets.commerce.v1;
 service ShopDomainService {
   rpc AddDomainToShop(AddDomainToShopRequest) returns (AddDomainToShopResponse);
   rpc GetDomainStatus(GetDomainStatusRequest) returns (GetDomainStatusResponse);
+  rpc GetClientIdForDomain(GetClientIdForDomainRequest) returns (GetClientIdForDomainResponse);
   rpc UpdateDomainStatus(UpdateDomainStatusRequest) returns (UpdateDomainStatusResponse);
   rpc RemoveDomainFromShop(RemoveDomainFromShopRequest) returns (RemoveDomainFromShopResponse);
 }
@@ -35,6 +36,14 @@ message GetDomainStatusRequest {
 
 message GetDomainStatusResponse {
   DomainStatusResponse domain_status = 1;
+}
+
+message GetClientIdForDomainRequest {
+  string domain = 1;
+}
+
+message GetClientIdForDomainResponse {
+  optional string client_id = 1;
 }
 
 message UpdateDomainStatusRequest {

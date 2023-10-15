@@ -34,6 +34,8 @@ message ShopResponse {
   optional ShopCustomizationResponse customization = 11;
 
   bool is_active = 12;
+
+  optional string contact_email_address = 13;
 }
 
 message CreateShopRequest {
@@ -119,6 +121,7 @@ message UpdateShopRequest {
   optional uint32 platform_fee_percent = 5;
   optional uint32 minimum_platform_fee_cent = 6;
   optional bool is_active = 7;
+  optional string contact_email_address = 8;
 }
 
 message UpdateShopResponse {

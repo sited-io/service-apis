@@ -19,4 +19,6 @@ message CreateReportRequest {
   string content = 3;
 }
 
-message CreateReportResponse {}
+message CreateReportResponse {
+  optional string link = 1;
+}

@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package peoplesmarkets.report.v1;
+
+service ReportService {
+  rpc CreateReport(CreateReportRequest) returns (CreateReportResponse);
+}
+
+enum ReportType {
+  REPORT_TYPE_UNSPECIFIED = 0;
+  REPORT_TYPE_BUG = 1;
+  REPORT_TYPE_FEATURE_REQUEST = 2;
+  REPORT_TYPE_QUESTION = 3;
+}
+
+message CreateReportRequest {
+  ReportType report_type = 1;
+  string title = 2;
+  string content = 3;
+}
+
+message CreateReportResponse {}

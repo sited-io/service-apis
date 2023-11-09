@@ -10,6 +10,7 @@ import "peoplesmarkets/pagination/v1/pagination.proto";
 service OfferService {
   rpc CreateOffer(CreateOfferRequest) returns (CreateOfferResponse);
   rpc GetOffer(GetOfferRequest) returns (GetOfferResponse);
+  rpc GetMyOffer(GetMyOfferRequest) returns (GetMyOfferResponse);
   rpc ListOffers(ListOffersRequest) returns (ListOffersResponse);
   rpc UpdateOffer(UpdateOfferRequest) returns (UpdateOfferResponse);
   rpc DeleteOffer(DeleteOfferRequest) returns (DeleteOfferResponse);
@@ -72,6 +73,14 @@ message GetOfferRequest {
 }
 
 message GetOfferResponse {
+  OfferResponse offer = 1;
+}
+
+message GetMyOfferRequest {
+  string offer_id = 1;
+}
+
+message GetMyOfferResponse {
   OfferResponse offer = 1;
 }
 

@@ -114,7 +114,7 @@ message OffersFilter {
 message ListOffersRequest {
   optional string user_id = 1;
   optional string shop_id = 2;
-  optional peoplesmarkets.pagination.v1.Pagination pagination = 3;
+  optional peoplesmarkets.pagination.v1.PaginationRequest pagination = 3;
   optional OffersOrderBy order_by = 4;
   optional OffersFilter filter = 5;
 }

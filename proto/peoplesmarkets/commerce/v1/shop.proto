@@ -37,6 +37,8 @@ message ShopResponse {
   bool is_active = 12;
 
   optional string contact_email_address = 13;
+
+  optional string client_id = 14;
 }
 
 message CreateShopRequest {

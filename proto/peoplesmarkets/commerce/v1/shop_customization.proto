@@ -16,6 +16,12 @@ service ShopCustomizationService {
   rpc RemoveLogoImageFromShop(RemoveLogoImageFromShopRequest) returns (RemoveLogoImageFromShopResponse);
 }
 
+enum ShopLayoutType {
+  SHOP_LAYOUT_TYPE_UNSPECIFIED = 0;
+  SHOP_LAYOUT_TYPE_FEAD = 1;
+  SHOP_LAYOUT_TYPE_OFFER_LIST = 2;
+}
+
 message ShopCustomizationResponse {
   string shop_id = 1;
   string user_id = 2;
@@ -30,11 +36,13 @@ message ShopCustomizationResponse {
   optional string banner_image_dark_url = 8;
 
   optional string primary_color = 9;
+  ShopLayoutType layout_type = 10;
 }
 
 message PutShopCustomizationRequest {
   string shop_id = 1;
   optional string primary_color = 2;
+  ShopLayoutType layout_type = 3;
 }
 
 message PutShopCustomizationResponse {

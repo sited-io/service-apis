@@ -9,9 +9,6 @@ import "peoplesmarkets/pagination/v1/pagination.proto";
 service ShopService {
   rpc CreateShop(CreateShopRequest) returns (CreateShopResponse);
   rpc GetShop(GetShopRequest) returns (GetShopResponse);
-  rpc GetShopBySlug(GetShopBySlugRequest) returns (GetShopBySlugResponse);
-  rpc GetShopByDomain(GetShopByDomainRequest) returns (GetShopByDomainResponse);
-  rpc GetMyShop(GetMyShopRequest) returns (GetMyShopResponse);
   rpc ListShops(ListShopsRequest) returns (ListShopsResponse);
   rpc UpdateShop(UpdateShopRequest) returns (UpdateShopResponse);
   rpc DeleteShop(DeleteShopRequest) returns (DeleteShopResponse);
@@ -54,38 +51,14 @@ message CreateShopResponse {
 }
 
 message GetShopRequest {
-  string shop_id = 1;
+  optional string shop_id = 1;
   optional bool extended = 2;
+  optional string slug = 3;
+  optional string domain = 4;
+  optional string owner = 5;
 }
 
 message GetShopResponse {
-  ShopResponse shop = 1;
-}
-
-message GetMyShopRequest {
-  optional string shop_id = 1;
-  optional string slug = 2;
-  optional string domain = 3;
-  optional bool extended = 4;
-}
-
-message GetMyShopResponse {
-  ShopResponse shop = 1;
-}
-
-message GetShopBySlugRequest {
-  string slug = 1;
-}
-
-message GetShopBySlugResponse {
-  ShopResponse shop = 1;
-}
-
-message GetShopByDomainRequest {
-  string domain = 1;
-}
-
-message GetShopByDomainResponse {
   ShopResponse shop = 1;
 }
 

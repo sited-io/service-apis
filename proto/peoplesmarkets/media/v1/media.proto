@@ -115,6 +115,7 @@ message UpdateMediaRequest {
   string media_id = 1;
   optional string name = 2;
   optional MediaUpload file = 3;
+  optional string file_name = 4;
 }
 
 message UpdateMediaResponse {

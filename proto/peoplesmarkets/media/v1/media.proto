@@ -19,6 +19,7 @@ service MediaService {
   rpc CompleteMultipartUpload(CompleteMultipartUploadRequest) returns (CompleteMultipartUploadResponse);
 
   rpc AddMediaToOffer(AddMediaToOfferRequest) returns (AddMediaToOfferResponse);
+  rpc UpdateMediaOfferOrdering(UpdateMediaOfferOrderingRequest) returns (UpdateMediaOfferOrderingResponse);
   rpc RemoveMediaFromOffer(RemoveMediaFromOfferRequest) returns (RemoveMediaFromOfferResponse);
 }
 
@@ -172,6 +173,14 @@ message AddMediaToOfferRequest {
 }
 
 message AddMediaToOfferResponse {}
+
+message UpdateMediaOfferOrderingRequest {
+  string media_id = 1;
+  string offer_id = 2;
+  int64 ordering = 3;
+}
+
+message UpdateMediaOfferOrderingResponse {}
 
 message RemoveMediaFromOfferRequest {
   string media_id = 1;

@@ -71,6 +71,7 @@ enum MediaOrderByField {
   MEDIA_ORDER_BY_FIELD_UNSPECIFIED = 0;
   MEDIA_ORDER_BY_FIELD_CREATED_AT = 1;
   MEDIA_ORDER_BY_FIELD_UPDATED_AT = 2;
+  MEDIA_ORDER_BY_FIELD_ORDERING = 3;
 }
 
 message MediaOrderBy {
@@ -166,6 +167,7 @@ message CompleteMultipartUploadResponse {}
 message AddMediaToOfferRequest {
   string media_id = 1;
   string offer_id = 2;
+  optional int64 ordering = 3;
 }
 
 message AddMediaToOfferResponse {}

@@ -34,7 +34,7 @@ message MediaResponse {
 
   string name = 7;
   string file_name = 8;
-  optional int64 ordering = 9;
+  int64 ordering = 9;
 }
 
 message MediaUpload {

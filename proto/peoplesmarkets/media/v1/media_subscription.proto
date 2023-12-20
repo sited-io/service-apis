@@ -56,6 +56,7 @@ message GetMediaSubscriptionResponse {
 message ListMediaSubscriptionsRequest {
   optional string shop_id = 1;
   optional peoplesmarkets.pagination.v1.Pagination pagination = 2;
+  optional bool is_accessible = 3;
 }
 
 message ListMediaSubscriptionsResponse {

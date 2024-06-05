@@ -105,14 +105,14 @@ message ListMediaResponse {
 }
 
 message ListAccessibleMediaRequest {
-  optional peoplesmarkets.pagination.v1.Pagination pagination = 2;
+  optional peoplesmarkets.pagination.v1.PaginationRequest pagination = 2;
   optional MediaOrderBy order_by = 3;
   optional MediaFilter filter = 4;
 }
 
 message ListAccessibleMediaResponse {
   repeated MediaResponse medias = 1;
-  peoplesmarkets.pagination.v1.Pagination pagination = 2;
+  peoplesmarkets.pagination.v1.PaginationResponse pagination = 2;
 }
 
 message UpdateMediaRequest {

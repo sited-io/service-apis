@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package peoplesmarkets.commerce.v1;
+package sited_io.commerce.v1;
 
 service ShopDomainService {
   rpc AddDomainToShop(AddDomainToShopRequest) returns (AddDomainToShopResponse);

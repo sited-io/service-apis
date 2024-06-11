@@ -1,4 +1,4 @@
-# Service APIs for peoplesmarkets.com
+# Service APIs for sited.io
 
 ## Usage
 

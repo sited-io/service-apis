@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package peoplesmarkets.websites.v1;
+package sited_io.websites.v1;
 
-import "peoplesmarkets/pagination/v1/pagination.proto";
+import "sited_io/pagination/v1/pagination.proto";
 
 service WebsiteService {
   rpc CreateWebsite(CreateWebsiteRequest) returns (CreateWebsiteResponse);
@@ -44,12 +44,12 @@ message GetWebsiteResponse {
 
 message ListWebsitesRequest {
   optional string user_id = 1;
-  optional peoplesmarkets.pagination.v1.PaginationRequest pagination = 2;
+  optional sited_io.pagination.v1.PaginationRequest pagination = 2;
 }
 
 message ListWebsitesResponse {
   repeated WebsiteResponse webistes = 1;
-  peoplesmarkets.pagination.v1.PaginationResponse pagination = 2;
+  sited_io.pagination.v1.PaginationResponse pagination = 2;
 }
 
 message UpdateWebsiteRequest {

@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package peoplesmarkets.commerce.v1;
+package sited_io.commerce.v1;
 
-import "peoplesmarkets/commerce/v1/price.proto";
-import "peoplesmarkets/media/v1/media.proto";
-import "peoplesmarkets/ordering/v1/ordering.proto";
-import "peoplesmarkets/pagination/v1/pagination.proto";
+import "sited_io/commerce/v1/price.proto";
+import "sited_io/media/v1/media.proto";
+import "sited_io/ordering/v1/ordering.proto";
+import "sited_io/pagination/v1/pagination.proto";
 
 service OfferService {
   rpc CreateOffer(CreateOfferRequest) returns (CreateOfferResponse);
@@ -94,7 +94,7 @@ enum OffersOrderByField {
 
 message OffersOrderBy {
   OffersOrderByField field = 1;
-  peoplesmarkets.ordering.v1.Direction direction = 2;
+  sited_io.ordering.v1.Direction direction = 2;
 }
 
 enum OffersFilterField {
@@ -114,14 +114,14 @@ message OffersFilter {
 message ListOffersRequest {
   optional string user_id = 1;
   optional string shop_id = 2;
-  optional peoplesmarkets.pagination.v1.PaginationRequest pagination = 3;
+  optional sited_io.pagination.v1.PaginationRequest pagination = 3;
   optional OffersOrderBy order_by = 4;
   optional OffersFilter filter = 5;
 }
 
 message ListOffersResponse {
   repeated OfferResponse offers = 1;
-  peoplesmarkets.pagination.v1.PaginationResponse pagination = 2;
+  sited_io.pagination.v1.PaginationResponse pagination = 2;
 }
 
 message UpdateOfferRequest {
@@ -145,7 +145,7 @@ message DeleteOfferResponse {}
 
 message AddImageToOfferRequest {
   string offer_id = 1;
-  peoplesmarkets.media.v1.MediaUpload image = 2;
+  sited_io.media.v1.MediaUpload image = 2;
   int64 ordering = 3;
 }
 

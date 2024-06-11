@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package peoplesmarkets.report.v1;
+package sited_io.report.v1;
 
 service ReportService {
   rpc CreateReport(CreateReportRequest) returns (CreateReportResponse);

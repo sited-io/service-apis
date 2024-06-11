@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package peoplesmarkets.media.v1;
+package sited_io.media.v1;
 
-import "peoplesmarkets/pagination/v1/pagination.proto";
+import "sited_io/pagination/v1/pagination.proto";
 
 service MediaSubscriptionService {
   rpc PutMediaSubscription(PutMediaSubscriptionRequest) returns (PutMediaSubscriptionResponse);
@@ -55,13 +55,13 @@ message GetMediaSubscriptionResponse {
 
 message ListMediaSubscriptionsRequest {
   optional string shop_id = 1;
-  optional peoplesmarkets.pagination.v1.PaginationRequest pagination = 2;
+  optional sited_io.pagination.v1.PaginationRequest pagination = 2;
   optional bool is_accessible = 3;
 }
 
 message ListMediaSubscriptionsResponse {
   repeated MediaSubscriptionResponse media_subscriptions = 1;
-  peoplesmarkets.pagination.v1.PaginationResponse pagination = 2;
+  sited_io.pagination.v1.PaginationResponse pagination = 2;
 }
 
 message CancelMediaSubscriptionRequest {

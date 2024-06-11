@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package peoplesmarkets.commerce.v1;
+package sited_io.commerce.v1;
 
-import "peoplesmarkets/media/v1/media.proto";
+import "sited_io/media/v1/media.proto";
 
 service ShopCustomizationService {
   rpc PutShopCustomization(PutShopCustomizationRequest) returns (PutShopCustomizationResponse);
@@ -65,8 +65,8 @@ message DeleteShopCustomizationResponse {}
 
 message PutBannerImageToShopRequest {
   string shop_id = 1;
-  peoplesmarkets.media.v1.MediaUpload image = 2;
-  optional peoplesmarkets.media.v1.MediaUpload image_dark = 3;
+  sited_io.media.v1.MediaUpload image = 2;
+  optional sited_io.media.v1.MediaUpload image_dark = 3;
 }
 
 message PutBannerImageToShopResponse {}
@@ -79,8 +79,8 @@ message RemoveBannerImageFromShopResponse {}
 
 message PutLogoImageToShopRequest {
   string shop_id = 1;
-  peoplesmarkets.media.v1.MediaUpload image = 2;
-  optional peoplesmarkets.media.v1.MediaUpload image_dark = 3;
+  sited_io.media.v1.MediaUpload image = 2;
+  optional sited_io.media.v1.MediaUpload image_dark = 3;
 }
 
 message PutLogoImageToShopResponse {}

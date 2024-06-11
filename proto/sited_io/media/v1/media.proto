@@ -1,9 +1,9 @@
 syntax = "proto3";
 
-package peoplesmarkets.media.v1;
+package sited_io.media.v1;
 
-import "peoplesmarkets/ordering/v1/ordering.proto";
-import "peoplesmarkets/pagination/v1/pagination.proto";
+import "sited_io/ordering/v1/ordering.proto";
+import "sited_io/pagination/v1/pagination.proto";
 
 service MediaService {
   rpc CreateMedia(CreateMediaRequest) returns (CreateMediaResponse);
@@ -78,7 +78,7 @@ enum MediaOrderByField {
 
 message MediaOrderBy {
   MediaOrderByField field = 1;
-  peoplesmarkets.ordering.v1.Direction direction = 2;
+  sited_io.ordering.v1.Direction direction = 2;
 }
 
 enum MediaFilterField {
@@ -94,25 +94,25 @@ message MediaFilter {
 
 message ListMediaRequest {
   string shop_id = 1;
-  optional peoplesmarkets.pagination.v1.Pagination pagination = 2;
+  optional sited_io.pagination.v1.Pagination pagination = 2;
   optional MediaOrderBy order_by = 3;
   optional MediaFilter filter = 4;
 }
 
 message ListMediaResponse {
   repeated MediaResponse medias = 1;
-  peoplesmarkets.pagination.v1.Pagination pagination = 2;
+  sited_io.pagination.v1.Pagination pagination = 2;
 }
 
 message ListAccessibleMediaRequest {
-  optional peoplesmarkets.pagination.v1.PaginationRequest pagination = 2;
+  optional sited_io.pagination.v1.PaginationRequest pagination = 2;
   optional MediaOrderBy order_by = 3;
   optional MediaFilter filter = 4;
 }
 
 message ListAccessibleMediaResponse {
   repeated MediaResponse medias = 1;
-  peoplesmarkets.pagination.v1.PaginationResponse pagination = 2;
+  sited_io.pagination.v1.PaginationResponse pagination = 2;
 }
 
 message UpdateMediaRequest {

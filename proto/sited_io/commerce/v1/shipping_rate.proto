@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package peoplesmarkets.commerce.v1;
+package sited_io.commerce.v1;
 
-import "peoplesmarkets/commerce/v1/price.proto";
+import "sited_io/commerce/v1/price.proto";
 
 service ShippingRateService {
   rpc PutShippingRate(PutShippingRateRequest) returns (PutShippingRateResponse);

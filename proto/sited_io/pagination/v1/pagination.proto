@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package peoplesmarkets.pagination.v1;
+package sited_io.pagination.v1;
 
 // deprecate in favor of PaginationRequest/PaginationResponse
 message Pagination {

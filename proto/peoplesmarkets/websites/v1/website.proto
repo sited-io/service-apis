@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package peoplesmarkets.websites.v1;
+
+import "peoplesmarkets/pagination/v1/pagination.proto";
+
+service WebsiteService {
+  rpc CreateWebsite(CreateWebsiteRequest) returns (CreateWebsiteResponse);
+  rpc GetWebsite(GetWebsiteRequest) returns (GetWebsiteResponse);
+  rpc ListWebsites(ListWebsitesRequest) returns (ListWebsitesResponse);
+  rpc UpdateWebsite(UpdateWebsiteRequest) returns (UpdateWebsiteResponse);
+  rpc DeleteWebsite(DeleteWebsiteRequest) returns (DeleteWebsiteResponse);
+}
+
+message WebsiteResponse {
+  string website_id = 1;
+  string user_id = 2;
+
+  uint64 created_at = 3;
+  uint64 updated_at = 4;
+
+  string name = 5;
+  string domain = 6;
+  string client_id = 7;
+}
+
+message CreateWebsiteRequest {
+  string name = 1;
+}
+
+message CreateWebsiteResponse {
+  WebsiteResponse website = 1;
+}
+
+message GetWebsiteRequest {
+  optional string website_id = 1;
+  optional string domain = 2;
+  optional string client_id = 3;
+}
+
+message GetWebsiteResponse {
+  WebsiteResponse website = 1;
+}
+
+message ListWebsitesRequest {
+  optional string user_id = 1;
+  optional peoplesmarkets.pagination.v1.PaginationRequest pagination = 2;
+}
+
+message ListWebsitesResponse {
+  repeated WebsiteResponse webistes = 1;
+  peoplesmarkets.pagination.v1.PaginationResponse pagination = 2;
+}
+
+message UpdateWebsiteRequest {
+  optional string name = 1;
+}
+
+message UpdateWebsiteResponse {
+  WebsiteResponse website = 1;
+}
+
+message DeleteWebsiteRequest {
+  string website_id = 1;
+}
+
+message DeleteWebsiteResponse {}

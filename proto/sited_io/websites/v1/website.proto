@@ -53,7 +53,8 @@ message ListWebsitesResponse {
 }
 
 message UpdateWebsiteRequest {
-  optional string name = 1;
+  string website_id = 1;
+  optional string name = 2;
 }
 
 message UpdateWebsiteResponse {

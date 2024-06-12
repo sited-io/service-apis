@@ -23,7 +23,19 @@ message WebsiteResponse {
 
   string name = 5;
   string client_id = 6;
-  repeated string domains = 7;
+  repeated Domain domains = 7;
+}
+
+enum DomainStatus {
+  DOMAIN_STATUS_UNSPECIFIED = 0;
+  DOMAIN_STATUS_INTERNAL = 1;
+  DOMAIN_STATUS_PENDING = 2;
+  DOMAIN_STATUS_ACTIVE = 3;
+}
+
+message Domain {
+  string domain = 1;
+  DomainStatus status = 2;
 }
 
 message CreateWebsiteRequest {

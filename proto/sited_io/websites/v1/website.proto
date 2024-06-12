@@ -9,6 +9,8 @@ service WebsiteService {
   rpc GetWebsite(GetWebsiteRequest) returns (GetWebsiteResponse);
   rpc ListWebsites(ListWebsitesRequest) returns (ListWebsitesResponse);
   rpc UpdateWebsite(UpdateWebsiteRequest) returns (UpdateWebsiteResponse);
+  rpc AddDomainToWebsite(AddDomainToWebsiteRequest) returns (AddDomainToWebsiteResponse);
+  rpc RemoveDomainFromWebsite(RemoveDomainFromWebsiteRequest) returns (RemoveDomainFromWebsiteResponse);
   rpc DeleteWebsite(DeleteWebsiteRequest) returns (DeleteWebsiteResponse);
 }
 
@@ -58,6 +60,24 @@ message UpdateWebsiteRequest {
 }
 
 message UpdateWebsiteResponse {
+  WebsiteResponse website = 1;
+}
+
+message AddDomainToWebsiteRequest {
+  string website_id = 1;
+  string domain = 2;
+}
+
+message AddDomainToWebsiteResponse {
+  WebsiteResponse website = 1;
+}
+
+message RemoveDomainFromWebsiteRequest {
+  string website_id = 1;
+  string domain = 2;
+}
+
+message RemoveDomainFromWebsiteResponse {
   WebsiteResponse website = 1;
 }
 

@@ -20,8 +20,8 @@ message WebsiteResponse {
   uint64 updated_at = 4;
 
   string name = 5;
-  string domain = 6;
-  string client_id = 7;
+  string client_id = 6;
+  repeated string domains = 7;
 }
 
 message CreateWebsiteRequest {

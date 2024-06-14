@@ -8,12 +8,14 @@ service CustomizationService {
 
 message CustomizationResponse {
   optional string primary_color = 1;
+  optional string secondary_color = 2;
 }
 
 message PutCustomizationRequest {
   string website_id = 1;
 
   optional string primary_color = 2;
+  optional string secondary_color = 3;
 }
 
 message PutCustomizationResponse {

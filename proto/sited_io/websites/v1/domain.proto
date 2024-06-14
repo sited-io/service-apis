@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package sited_io.websites.v1;
+
+service DomainService {
+  rpc CreateDomain(CreateDomainRequest) returns (CreateDomainResponse);
+  rpc CheckDomainStatus(CheckDomainStatusRequest) returns (CheckDomainStatusResponse);
+  rpc DeleteDomain(DeleteDomainRequest) returns (DeleteDomainResponse);
+}
+
+message DomainResponse {
+  int64 domain_id = 1;
+
+  string domain = 2;
+  DomainStatus status = 3;
+}
+
+enum DomainStatus {
+  DOMAIN_STATUS_UNSPECIFIED = 0;
+  DOMAIN_STATUS_INTERNAL = 1;
+  DOMAIN_STATUS_PENDING = 2;
+  DOMAIN_STATUS_ACTIVE = 3;
+}
+
+message CreateDomainRequest {
+  string website_id = 1;
+  string domain = 2;
+}
+
+message CreateDomainResponse {
+  DomainResponse domain = 1;
+}
+
+message CheckDomainStatusRequest {
+  int64 domain_id = 1;
+}
+
+message CheckDomainStatusResponse {
+  DomainResponse domain = 1;
+}
+
+message DeleteDomainRequest {
+  int64 domain_id = 1;
+}
+
+message DeleteDomainResponse {
+  DomainResponse domain = 1;
+}

@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package sited_io.websites.v1;
+
+service CustomizationService {
+  rpc PutCustomization(PutCustomizationRequest) returns (PutCustomizationResponse);
+}
+
+message CustomizationResponse {
+  optional string primary_color = 1;
+}
+
+message PutCustomizationRequest {
+  string website_id = 1;
+
+  optional string primary_color = 2;
+}
+
+message PutCustomizationResponse {
+  CustomizationResponse customization = 1;
+}

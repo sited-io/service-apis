@@ -43,6 +43,4 @@ message DeleteDomainRequest {
   int64 domain_id = 1;
 }
 
-message DeleteDomainResponse {
-  DomainResponse domain = 1;
-}
+message DeleteDomainResponse {}

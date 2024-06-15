@@ -24,6 +24,7 @@ enum DomainStatus {
 
 message CreateDomainRequest {
   string website_id = 1;
+
   string domain = 2;
 }
 

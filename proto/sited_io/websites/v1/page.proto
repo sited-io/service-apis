@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+package sited_io.websites.v1;
+
+import "sited_io/pagination/v1/pagination.proto";
+
+service PageService {
+  rpc CreatePage(CreatePageRequest) returns (CreatePageResponse);
+  rpc GetPage(GetPageRequest) returns (GetPageResponse);
+  rpc ListPages(ListPagesRequest) returns (ListPagesResponse);
+  rpc UpdatePage(UpdatePageRequest) returns (UpdatePageResponse);
+  rpc DeletePage(DeletePageRequest) returns (DeletePageResponse);
+}
+
+message PageResponse {
+  int64 page_id = 1;
+
+  string title = 2;
+  PageType page_type = 3;
+  string content_id = 4;
+}
+
+enum PageType {
+  PAGE_TYPE_USPECIFIED = 0;
+  PAGE_TYPE_STATIC = 1;
+  PAGE_TYPE_SHOP = 2;
+}
+
+message CreatePageRequest {
+  string website_id = 1;
+
+  PageType page_type = 2;
+  string title = 3;
+}
+
+message CreatePageResponse {
+  PageResponse page = 1;
+}
+
+message GetPageRequest {
+  int64 page_id = 1;
+}
+
+message GetPageResponse {
+  PageResponse page = 1;
+}
+
+message ListPagesRequest {
+  optional string website_id = 1;
+  optional sited_io.pagination.v1.PaginationRequest pagination = 2;
+}
+
+message ListPagesResponse {
+  repeated PageResponse pages = 1;
+  sited_io.pagination.v1.PaginationResponse pagination = 2;
+}
+
+message UpdatePageRequest {
+  int64 page_id = 1;
+  optional string title = 2;
+  optional PageType page_type = 3;
+}
+
+message UpdatePageResponse {
+  PageResponse page = 1;
+}
+
+message DeletePageRequest {
+  int64 page_id = 1;
+}
+
+message DeletePageResponse {}

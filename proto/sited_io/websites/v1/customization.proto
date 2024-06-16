@@ -9,6 +9,7 @@ service CustomizationService {
 message CustomizationResponse {
   optional string primary_color = 1;
   optional string secondary_color = 2;
+  optional string logo_image_url = 3;
 }
 
 message PutCustomizationRequest {
@@ -16,6 +17,7 @@ message PutCustomizationRequest {
 
   optional string primary_color = 2;
   optional string secondary_color = 3;
+  optional string logo_image_url = 4;
 }
 
 message PutCustomizationResponse {

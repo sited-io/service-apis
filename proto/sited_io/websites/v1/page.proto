@@ -15,9 +15,9 @@ service PageService {
 message PageResponse {
   int64 page_id = 1;
 
-  string title = 2;
-  PageType page_type = 3;
-  string content_id = 4;
+  PageType page_type = 2;
+  string content_id = 3;
+  string title = 4;
 }
 
 enum PageType {
@@ -29,8 +29,8 @@ enum PageType {
 message CreatePageRequest {
   string website_id = 1;
   PageType page_type = 2;
-  string title = 3;
-  string content_id = 4;
+  string content_id = 3;
+  string title = 4;
 }
 
 message CreatePageResponse {
@@ -57,9 +57,9 @@ message ListPagesResponse {
 
 message UpdatePageRequest {
   int64 page_id = 1;
-  optional string title = 2;
-  optional PageType page_type = 3;
-  optional string content_id = 4;
+  optional PageType page_type = 2;
+  optional string content_id = 3;
+  optional string title = 4;
 }
 
 message UpdatePageResponse {

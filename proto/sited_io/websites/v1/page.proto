@@ -28,9 +28,9 @@ enum PageType {
 
 message CreatePageRequest {
   string website_id = 1;
-
   PageType page_type = 2;
   string title = 3;
+  string content_id = 4;
 }
 
 message CreatePageResponse {
@@ -59,6 +59,7 @@ message UpdatePageRequest {
   int64 page_id = 1;
   optional string title = 2;
   optional PageType page_type = 3;
+  optional string content_id = 4;
 }
 
 message UpdatePageResponse {

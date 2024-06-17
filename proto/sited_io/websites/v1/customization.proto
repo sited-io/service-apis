@@ -5,7 +5,8 @@ package sited_io.websites.v1;
 import "sited_io/media/v1/media.proto";
 
 service CustomizationService {
-  rpc PutCustomization(PutCustomizationRequest) returns (PutCustomizationResponse);
+  rpc UpdateCustomization(UpdateCustomizationRequest) returns (UpdateCustomizationResponse);
+  rpc PutLogoImage(PutLogoImageRequest) returns (PutLogoImageResponse);
 }
 
 message CustomizationResponse {
@@ -14,14 +15,19 @@ message CustomizationResponse {
   optional string logo_image_url = 3;
 }
 
-message PutCustomizationRequest {
+message UpdateCustomizationRequest {
   string website_id = 1;
-
   optional string primary_color = 2;
   optional string secondary_color = 3;
-  optional sited_io.media.v1.MediaUpload logo_image = 4;
 }
 
-message PutCustomizationResponse {
+message UpdateCustomizationResponse {
   CustomizationResponse customization = 1;
 }
+
+message PutLogoImageRequest {
+  string website_id = 1;
+  sited_io.media.v1.MediaUpload image = 2;
+}
+
+message PutLogoImageResponse {}

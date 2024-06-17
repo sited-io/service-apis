@@ -54,7 +54,11 @@ message CreateShopResponse {
 
 message GetShopRequest {
   optional string shop_id = 1;
-  optional string website_id = 2;
+  optional bool extended = 2;
+  optional string slug = 3;
+  optional string domain = 4;
+  optional string owner = 5;
+  optional string website_id = 6;
 }
 
 message GetShopResponse {

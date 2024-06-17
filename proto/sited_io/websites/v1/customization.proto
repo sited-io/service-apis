@@ -7,6 +7,7 @@ import "sited_io/media/v1/media.proto";
 service CustomizationService {
   rpc UpdateCustomization(UpdateCustomizationRequest) returns (UpdateCustomizationResponse);
   rpc PutLogoImage(PutLogoImageRequest) returns (PutLogoImageResponse);
+  rpc RemoveLogoImage(RemoveLogoImageRequest) returns (RemoveLogoImageResponse);
 }
 
 message CustomizationResponse {
@@ -31,3 +32,9 @@ message PutLogoImageRequest {
 }
 
 message PutLogoImageResponse {}
+
+message RemoveLogoImageRequest {
+  string website_id = 1;
+}
+
+message RemoveLogoImageResponse {}

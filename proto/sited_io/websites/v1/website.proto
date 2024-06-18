@@ -53,7 +53,7 @@ message ListWebsitesRequest {
 }
 
 message ListWebsitesResponse {
-  repeated WebsiteResponse webistes = 1;
+  repeated WebsiteResponse websites = 1;
   sited_io.pagination.v1.PaginationResponse pagination = 2;
 }
 

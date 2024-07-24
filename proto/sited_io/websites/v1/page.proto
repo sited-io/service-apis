@@ -42,8 +42,8 @@ message CreatePageResponse {
 
 message GetPageRequest {
   optional int64 page_id = 1;
-  optional string website_id = 2 [deprecated = true];
-  optional string path = 3 [deprecated = true];
+  optional string website_id = 2;
+  optional string path = 3;
 }
 
 message GetPageResponse {

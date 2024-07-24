@@ -14,13 +14,11 @@ service PageService {
 
 message PageResponse {
   int64 page_id = 1;
-  string website_id = 2;
-  string user_id = 3;
-  PageType page_type = 4;
-  string content_id = 5;
-  string title = 6;
-  bool is_home_page = 7;
-  string path = 8;
+  PageType page_type = 2;
+  string content_id = 3;
+  string title = 4;
+  bool is_home_page = 5;
+  string path = 6;
 }
 
 enum PageType {

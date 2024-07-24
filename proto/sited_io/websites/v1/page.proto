@@ -13,11 +13,13 @@ service PageService {
 }
 
 message PageResponse {
-  int64 page_id = 1;
-  PageType page_type = 2;
-  string content_id = 3;
-  string title = 4;
-  string path = 5;
+  string website_id = 1;
+  int64 page_id = 2;
+  PageType page_type = 3;
+  string content_id = 4;
+  string title = 5;
+  bool is_home_page = 6;
+  string path = 7;
 }
 
 enum PageType {
@@ -32,6 +34,7 @@ message CreatePageRequest {
   string content_id = 3;
   string title = 4;
   bool is_home_page = 5;
+  string path = 6;
 }
 
 message CreatePageResponse {
@@ -64,6 +67,7 @@ message UpdatePageRequest {
   optional string content_id = 3;
   optional string title = 4;
   optional bool is_home_page = 5;
+  optional string path = 6;
 }
 
 message UpdatePageResponse {

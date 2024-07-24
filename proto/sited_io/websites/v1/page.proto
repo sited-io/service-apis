@@ -33,7 +33,7 @@ message CreatePageRequest {
   string content_id = 3;
   string title = 4;
   bool is_home_page = 5;
-  string path = 6;
+  optional string path = 6;
 }
 
 message CreatePageResponse {

@@ -7,7 +7,6 @@ import "sited_io/pagination/v1/pagination.proto";
 service PageService {
   rpc CreatePage(CreatePageRequest) returns (CreatePageResponse);
   rpc GetPage(GetPageRequest) returns (GetPageResponse);
-  rpc GetPageForWebsite(GetPageForWebsiteRequest) returns (GetPageForWebsiteResponse);
   rpc ListPages(ListPagesRequest) returns (ListPagesResponse);
   rpc UpdatePage(UpdatePageRequest) returns (UpdatePageResponse);
   rpc DeletePage(DeletePageRequest) returns (DeletePageResponse);
@@ -48,16 +47,6 @@ message GetPageRequest {
 }
 
 message GetPageResponse {
-  PageResponse page = 1;
-}
-
-message GetPageForWebsiteRequest {
-  string website_id = 1;
-  optional bool is_home_page = 2;
-  optional string path = 3;
-}
-
-message GetPageForWebsiteResponse {
   PageResponse page = 1;
 }
 

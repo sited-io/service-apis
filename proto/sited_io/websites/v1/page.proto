@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package sited_io.websites.v1;
 
+import "google/protobuf/struct.proto";
 import "sited_io/pagination/v1/pagination.proto";
 
 service PageService {
@@ -19,7 +20,7 @@ message PageResponse {
   string title = 4;
   bool is_home_page = 5;
   string path = 6;
-  optional string static_content = 7;
+  optional google.protobuf.Struct static_content = 7;
 }
 
 enum PageType {
@@ -68,7 +69,7 @@ message UpdatePageRequest {
   optional string title = 4;
   optional bool is_home_page = 5;
   optional string path = 6;
-  optional string static_content = 7;
+  optional google.protobuf.Struct static_content = 7;
 }
 
 message UpdatePageResponse {

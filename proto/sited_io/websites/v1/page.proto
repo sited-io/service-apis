@@ -19,10 +19,11 @@ message PageResponse {
   string title = 4;
   bool is_home_page = 5;
   string path = 6;
+  optional string static_content = 7;
 }
 
 enum PageType {
-  PAGE_TYPE_USPECIFIED = 0;
+  PAGE_TYPE_UNSPECIFIED = 0;
   PAGE_TYPE_STATIC = 1;
   PAGE_TYPE_SHOP = 2;
 }
@@ -67,6 +68,7 @@ message UpdatePageRequest {
   optional string title = 4;
   optional bool is_home_page = 5;
   optional string path = 6;
+  optional string static_content = 7;
 }
 
 message UpdatePageResponse {

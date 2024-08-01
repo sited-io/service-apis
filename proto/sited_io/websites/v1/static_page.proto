@@ -1,0 +1,101 @@
+syntax = "proto3";
+
+package sited_io.websites.v1;
+
+service StaticPageService {
+  rpc CreateStaticPage(CreateStaticPageRequest) returns (CreateStaticPageResponse);
+  rpc GetStaticPage(GetStaticPageRequest) returns (GetStaticPageResponse);
+  rpc ListStaticPages(ListStaticPagesRequest) returns (ListStaticPagesResponse);
+  rpc UpdateStaticPage(UpdateStaticPageRequest) returns (UpdateStaticPageResponse);
+  rpc DeleteStaticPage(DeleteStaticPageRequest) returns (DeleteStaticPageResponse);
+}
+
+message StaticPageResponse {
+  string static_page_id = 1;
+  int64 page_id = 2;
+  string user_id = 3;
+  repeated Component components = 4;
+}
+
+message CreateStaticPageRequest {
+  int64 page_id = 1;
+  repeated Component components = 2;
+}
+
+message CreateStaticPageResponse {
+  StaticPageResponse static_page = 1;
+}
+
+message GetStaticPageRequest {
+  string static_page_id = 1;
+}
+
+message GetStaticPageResponse {
+  StaticPageResponse static_page = 1;
+}
+
+message ListStaticPagesRequest {
+  optional string user_id = 1; // Optional: Filter by user ID if needed
+}
+
+message ListStaticPagesResponse {
+  repeated StaticPageResponse static_pages = 1;
+}
+
+message UpdateStaticPageRequest {
+  string static_page_id = 1;
+  repeated Component components = 2;
+}
+
+message UpdateStaticPageResponse {
+  StaticPageResponse static_page = 1;
+}
+
+message DeleteStaticPageRequest {
+  string static_page_id = 1;
+}
+
+message DeleteStaticPageResponse {
+  bool success = 1;
+}
+
+message Component {
+  string component_id = 1;
+  string component_type = 2;
+  message Data {
+    oneof data_type {
+      InlineComponent inline = 1;
+      HeaderComponent header = 2;
+      ParagraphComponent paragraph = 3;
+    }
+  }
+}
+
+message InlineComponent {
+  InlineElement element = 1;
+}
+
+message HeaderComponent {
+  int32 level = 1;
+  string content = 2;
+}
+
+message ParagraphComponent {
+  repeated InlineElement elements = 1;
+}
+
+message InlineElement {
+  oneof element_type {
+    TextElement text = 1;
+    LinkElement link = 2;
+  }
+}
+
+message TextElement {
+  string content = 1;
+}
+
+message LinkElement {
+  string text = 1;
+  string url = 2;
+}

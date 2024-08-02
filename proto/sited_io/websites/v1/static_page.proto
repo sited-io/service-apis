@@ -13,8 +13,9 @@ service StaticPageService {
 message StaticPageResponse {
   string static_page_id = 1;
   int64 page_id = 2;
-  string user_id = 3;
-  repeated Component components = 4;
+  string website_id = 3;
+  string user_id = 4;
+  repeated Component components = 5;
 }
 
 message CreateStaticPageRequest {
@@ -64,15 +65,10 @@ message Component {
   string component_type = 2;
   message Data {
     oneof data_type {
-      InlineComponent inline = 1;
-      HeaderComponent header = 2;
-      ParagraphComponent paragraph = 3;
+      HeaderComponent header = 1;
+      ParagraphComponent paragraph = 2;
     }
   }
-}
-
-message InlineComponent {
-  InlineElement element = 1;
 }
 
 message HeaderComponent {

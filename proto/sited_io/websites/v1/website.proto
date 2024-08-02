@@ -2,10 +2,10 @@ syntax = "proto3";
 
 package sited_io.websites.v1;
 
+import "sited_io/pagination/v1/pagination.proto";
 import "sited_io/websites/v1/customization.proto";
 import "sited_io/websites/v1/domain.proto";
 import "sited_io/websites/v1/page.proto";
-import "sited_io/pagination/v1/pagination.proto";
 
 service WebsiteService {
   rpc CreateWebsite(CreateWebsiteRequest) returns (CreateWebsiteResponse);

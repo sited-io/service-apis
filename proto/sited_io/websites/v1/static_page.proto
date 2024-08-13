@@ -122,7 +122,11 @@ enum ListType {
 }
 
 message ListItem {
-  repeated InlineElement content = 1;
+  oneof item_content {
+    HeaderComponent header = 1;
+    ParagraphComponent content = 2;
+    ListComponent list = 3;
+  }
 }
 
 message SeparatorComponent {}

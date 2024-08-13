@@ -63,6 +63,8 @@ message DeleteStaticPageResponse {
 message Component {
   string component_id = 1;
   string component_type = 2;
+  Data component = 3;
+
   message Data {
     oneof data_type {
       HeaderComponent header = 1;

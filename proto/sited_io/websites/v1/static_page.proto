@@ -69,6 +69,9 @@ message Component {
     oneof data_type {
       HeaderComponent header = 1;
       ParagraphComponent paragraph = 2;
+      ListComponent list = 3;
+      SeparatorComponent separator = 4;
+      SpaceComponent space = 5;
     }
   }
 }
@@ -77,6 +80,9 @@ enum ComponentType {
   COMPONENT_TYPE_UNSPECIFIED = 0;
   COMPONENT_TYPE_HEADER = 1;
   COMPONENT_TYPE_PARAGRAPH = 2;
+  COMPONENT_TYPE_LIST = 3;
+  COMPONENT_TYPE_SEPARATOR = 4;
+  COMPONENT_TYPE_SPACE = 5;
 }
 
 message HeaderComponent {
@@ -85,7 +91,7 @@ message HeaderComponent {
 }
 
 message ParagraphComponent {
-  repeated InlineElement elements = 1;
+  repeated InlineElement content = 1;
 }
 
 message InlineElement {
@@ -96,10 +102,29 @@ message InlineElement {
 }
 
 message TextElement {
-  string content = 1;
+  string text = 1;
 }
 
 message LinkElement {
   string text = 1;
   string url = 2;
 }
+
+message ListComponent {
+  ListType list_type = 1;
+  repeated ListItem items = 2;
+}
+
+enum ListType {
+  LIST_TYPE_UNSPECIFIED = 0;
+  LIST_TYPE_ORDERED = 1;
+  LIST_TYPE_UNORDERED = 2;
+}
+
+message ListItem {
+  repeated InlineElement content = 1;
+}
+
+message SeparatorComponent {}
+
+message SpaceComponent {}

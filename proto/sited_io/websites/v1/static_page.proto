@@ -62,7 +62,7 @@ message DeleteStaticPageResponse {
 
 message Component {
   string component_id = 1;
-  string component_type = 2;
+  ComponentType component_type = 2;
   Data component = 3;
 
   message Data {
@@ -71,6 +71,12 @@ message Component {
       ParagraphComponent paragraph = 2;
     }
   }
+}
+
+enum ComponentType {
+  COMPONENT_TYPE_UNSPECIFIED = 0;
+  COMPONENT_TYPE_HEADER = 1;
+  COMPONENT_TYPE_PARAGRAPH = 2;
 }
 
 message HeaderComponent {

@@ -125,8 +125,8 @@ message ListItem {
   oneof item_content {
     HeaderComponent header = 1;
     ParagraphComponent content = 2;
-    ListComponent list = 3;
   }
+  optional ListComponent sublist = 3;
 }
 
 message SeparatorComponent {}

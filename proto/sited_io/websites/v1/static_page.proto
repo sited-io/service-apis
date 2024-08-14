@@ -3,61 +3,32 @@ syntax = "proto3";
 package sited_io.websites.v1;
 
 service StaticPageService {
-  rpc CreateStaticPage(CreateStaticPageRequest) returns (CreateStaticPageResponse);
   rpc GetStaticPage(GetStaticPageRequest) returns (GetStaticPageResponse);
-  rpc ListStaticPages(ListStaticPagesRequest) returns (ListStaticPagesResponse);
   rpc UpdateStaticPage(UpdateStaticPageRequest) returns (UpdateStaticPageResponse);
-  rpc DeleteStaticPage(DeleteStaticPageRequest) returns (DeleteStaticPageResponse);
 }
 
 message StaticPageResponse {
-  string static_page_id = 1;
-  int64 page_id = 2;
-  string website_id = 3;
-  string user_id = 4;
-  repeated Component components = 5;
-}
-
-message CreateStaticPageRequest {
   int64 page_id = 1;
-  repeated Component components = 2;
-}
-
-message CreateStaticPageResponse {
-  StaticPageResponse static_page = 1;
+  string website_id = 2;
+  string user_id = 3;
+  repeated Component components = 4;
 }
 
 message GetStaticPageRequest {
-  string static_page_id = 1;
+  string page_id = 1;
 }
 
 message GetStaticPageResponse {
   StaticPageResponse static_page = 1;
 }
 
-message ListStaticPagesRequest {
-  optional string user_id = 1; // Optional: Filter by user ID if needed
-}
-
-message ListStaticPagesResponse {
-  repeated StaticPageResponse static_pages = 1;
-}
-
 message UpdateStaticPageRequest {
-  string static_page_id = 1;
+  string page_id = 1;
   repeated Component components = 2;
 }
 
 message UpdateStaticPageResponse {
   StaticPageResponse static_page = 1;
-}
-
-message DeleteStaticPageRequest {
-  string static_page_id = 1;
-}
-
-message DeleteStaticPageResponse {
-  bool success = 1;
 }
 
 message Component {

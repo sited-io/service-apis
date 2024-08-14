@@ -63,26 +63,13 @@ message DeleteStaticPageResponse {
 message Component {
   string component_id = 1;
   ComponentType component_type = 2;
-  Data component = 3;
-
-  message Data {
-    oneof data_type {
-      HeaderComponent header = 1;
-      ParagraphComponent paragraph = 2;
-      ListComponent list = 3;
-      SeparatorComponent separator = 4;
-      SpaceComponent space = 5;
-    }
-  }
 }
 
-enum ComponentType {
-  COMPONENT_TYPE_UNSPECIFIED = 0;
-  COMPONENT_TYPE_HEADER = 1;
-  COMPONENT_TYPE_PARAGRAPH = 2;
-  COMPONENT_TYPE_LIST = 3;
-  COMPONENT_TYPE_SEPARATOR = 4;
-  COMPONENT_TYPE_SPACE = 5;
+message ComponentType {
+  oneof inner {
+    HeaderComponent header = 1;
+    ParagraphComponent paragraph = 2;
+  }
 }
 
 message HeaderComponent {
@@ -109,26 +96,3 @@ message LinkElement {
   string text = 1;
   string url = 2;
 }
-
-message ListComponent {
-  ListType list_type = 1;
-  repeated ListItem items = 2;
-}
-
-enum ListType {
-  LIST_TYPE_UNSPECIFIED = 0;
-  LIST_TYPE_ORDERED = 1;
-  LIST_TYPE_UNORDERED = 2;
-}
-
-message ListItem {
-  oneof item_content {
-    HeaderComponent header = 1;
-    ParagraphComponent content = 2;
-  }
-  optional ListComponent sublist = 3;
-}
-
-message SeparatorComponent {}
-
-message SpaceComponent {}

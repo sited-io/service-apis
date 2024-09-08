@@ -5,7 +5,6 @@ package sited_io.commerce.v1;
 import "sited_io/media/v1/media.proto";
 
 service ShopCustomizationService {
-  option deprecated = true;
   rpc PutShopCustomization(PutShopCustomizationRequest) returns (PutShopCustomizationResponse);
   rpc GetShopCustomization(GetShopCustomizationRequest) returns (GetShopCustomizationResponse);
   rpc DeleteShopCustomization(DeleteShopCustomizationRequest) returns (DeleteShopCustomizationResponse);
@@ -24,6 +23,7 @@ enum ShopLayoutType {
 }
 
 message ShopCustomizationResponse {
+  option deprecated = true;
   string shop_id = 1;
   string user_id = 2;
 
@@ -41,6 +41,7 @@ message ShopCustomizationResponse {
 }
 
 message PutShopCustomizationRequest {
+  option deprecated = true;
   string shop_id = 1;
   optional string primary_color = 2;
   ShopLayoutType layout_type = 3;

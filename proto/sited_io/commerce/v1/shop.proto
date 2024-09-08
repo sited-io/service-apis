@@ -23,19 +23,19 @@ message ShopResponse {
 
   string name = 5;
   string slug = 6;
-  optional string domain = 7;
+  optional string domain = 7 [deprecated = true];
   optional string description = 8;
 
   uint32 platform_fee_percent = 9;
   uint32 minimum_platform_fee_cent = 10;
 
-  optional ShopCustomizationResponse customization = 11;
+  optional ShopCustomizationResponse customization = 11 [deprecated = true];
 
   bool is_active = 12;
 
   optional string contact_email_address = 13;
 
-  optional string client_id = 14;
+  optional string client_id = 14 [deprecated = true];
 
   string website_id = 15;
 }
@@ -54,7 +54,7 @@ message CreateShopResponse {
 
 message GetShopRequest {
   optional string shop_id = 1;
-  optional bool extended = 2;
+  optional bool extended = 2 [deprecated = true];
   optional string slug = 3;
   optional string domain = 4;
   optional string owner = 5;

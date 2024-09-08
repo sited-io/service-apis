@@ -3,6 +3,7 @@ syntax = "proto3";
 package sited_io.commerce.v1;
 
 service ShopDomainService {
+  option deprecated = true;
   rpc AddDomainToShop(AddDomainToShopRequest) returns (AddDomainToShopResponse);
   rpc GetDomainStatus(GetDomainStatusRequest) returns (GetDomainStatusResponse);
   rpc GetClientIdForDomain(GetClientIdForDomainRequest) returns (GetClientIdForDomainResponse);

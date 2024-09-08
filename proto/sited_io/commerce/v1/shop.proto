@@ -3,8 +3,8 @@ syntax = "proto3";
 package sited_io.commerce.v1;
 
 import "sited_io/commerce/v1/shop_customization.proto";
-import "sited_io/ordering/v1/ordering.proto";
-import "sited_io/pagination/v1/pagination.proto";
+import "sited_io/types/v1/ordering.proto";
+import "sited_io/types/v1/pagination.proto";
 
 service ShopService {
   rpc CreateShop(CreateShopRequest) returns (CreateShopResponse);
@@ -75,7 +75,7 @@ enum ShopsOrderByField {
 
 message ShopsOrderBy {
   ShopsOrderByField field = 1;
-  sited_io.ordering.v1.Direction direction = 2;
+  sited_io.types.v1.Direction direction = 2;
 }
 
 enum ShopsFilterField {
@@ -92,7 +92,7 @@ message ShopsFilter {
 
 message ListShopsRequest {
   optional string user_id = 1;
-  optional sited_io.pagination.v1.Pagination pagination = 2;
+  optional sited_io.types.v1.PaginationRequest pagination = 2;
   optional ShopsOrderBy order_by = 3;
   optional ShopsFilter filter = 4;
   optional bool extended = 5;
@@ -100,7 +100,7 @@ message ListShopsRequest {
 
 message ListShopsResponse {
   repeated ShopResponse shops = 1;
-  sited_io.pagination.v1.Pagination pagination = 2;
+  sited_io.types.v1.PaginationResponse pagination = 2;
 }
 
 message UpdateShopRequest {

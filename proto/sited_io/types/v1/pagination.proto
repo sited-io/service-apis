@@ -1,12 +1,6 @@
 syntax = "proto3";
 
-package sited_io.pagination.v1;
-
-// deprecate in favor of PaginationRequest/PaginationResponse
-message Pagination {
-  uint64 page = 1;
-  uint64 size = 2;
-}
+package sited_io.types.v1;
 
 message PaginationRequest {
   uint32 page = 1;

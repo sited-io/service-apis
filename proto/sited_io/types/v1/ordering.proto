@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package sited_io.ordering.v1;
+package sited_io.types.v1;
 
 enum Direction {
   DIRECTION_UNSPECIFIED = 0;

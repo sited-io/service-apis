@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package sited_io.websites.v1;
 
-import "sited_io/pagination/v1/pagination.proto";
+import "sited_io/types/v1/pagination.proto";
 import "sited_io/websites/v1/customization.proto";
 import "sited_io/websites/v1/domain.proto";
 import "sited_io/websites/v1/page.proto";
@@ -49,12 +49,12 @@ message GetWebsiteResponse {
 
 message ListWebsitesRequest {
   optional string user_id = 1;
-  optional sited_io.pagination.v1.PaginationRequest pagination = 2;
+  optional sited_io.types.v1.PaginationRequest pagination = 2;
 }
 
 message ListWebsitesResponse {
   repeated WebsiteResponse websites = 1;
-  sited_io.pagination.v1.PaginationResponse pagination = 2;
+  sited_io.types.v1.PaginationResponse pagination = 2;
 }
 
 message UpdateWebsiteRequest {

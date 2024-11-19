@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package sited_io.commerce.v2;
+
+message MultipartPart {
+  int32 part_number = 1;
+  string etag = 2;
+}

@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "module": "NodeNext",
+    "target": "ESNext",
+    "declaration": true,
+    "outDir": "./dist",
+    "moduleResolution": "nodenext"
+  },
+  "include": ["sited_io/**/*"]
+}

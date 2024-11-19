@@ -1,0 +1,22 @@
+version: v2
+clean: true
+managed:
+  enabled: true
+plugins:
+  - local: protoc-gen-prost
+    out: gen/rust/src
+    opt:
+      - bytes=.
+      - file_descriptor_set
+
+  # - local: protoc-gen-prost-serde
+  #   out: gen/rust/src
+
+  - local: protoc-gen-tonic
+    out: gen/rust/src
+
+  - local: protoc-gen-prost-crate
+    out: gen/rust
+    strategy: all
+    opt:
+      - gen_crate=Cargo.template.toml

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package sited_io.commerce.v2;
+
+import "sited_io/commerce/v2/offer.proto";
+
+message Shop {
+  string shop_id = 1;
+  string owner = 2;
+  string website_id = 3;
+  repeated Offer offers = 4;
+}

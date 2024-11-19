@@ -1,0 +1,90 @@
+syntax = "proto3";
+
+package sited_io.commerce.v2;
+
+import "sited_io/types/country/v1/country.proto";
+import "sited_io/types/currency/v1/currency.proto";
+
+message Offer {
+  string offer_id = 1;
+  string owner = 2;
+  int64 created_at = 3;
+  int64 updated_at = 4;
+  Details details = 5;
+  OfferType offer_type = 6;
+  optional OfferPrice price = 7;
+  optional ShippingRate shipping_rate = 8;
+  repeated OfferImage images = 9;
+  repeated OfferFile files = 10;
+
+  message Details {
+    string name = 1;
+    optional string description = 2;
+  }
+}
+
+message OfferType {
+  oneof offer_type_kind {
+    Physical physical = 1;
+    Digital digital = 2;
+  }
+
+  message Physical {}
+
+  message Digital {}
+}
+
+message OfferPrice {
+  uint32 unit_amount = 1;
+  sited_io.types.currency.v1.CurrencyCode currency = 2;
+  PriceType price_type = 3;
+}
+
+message PriceType {
+  oneof price_type_kind {
+    OneTime one_time = 1;
+    Recurring recurring = 2;
+  }
+
+  message OneTime {}
+
+  message Recurring {
+    Interval interval = 1;
+    uint32 interval_count = 2;
+    optional uint32 trial_period_days = 3;
+
+    enum Interval {
+      INTERVAL_UNSPECIFIED = 0;
+      INTERVAL_DAY = 1;
+      INTERVAL_WEEK = 2;
+      INTERVAL_MONTH = 3;
+      INTERVAL_YEAR = 4;
+    }
+  }
+}
+
+message ShippingRate {
+  uint32 unit_amount = 3;
+  sited_io.types.currency.v1.CurrencyCode currency = 4;
+  bool all_countries = 5;
+  repeated sited_io.types.country.v1.CountryCode specific_countries = 6;
+}
+
+message OfferImage {
+  string offer_image_id = 1;
+  string owner = 2;
+  string image_url = 3;
+  int32 ordering = 4;
+}
+
+message OfferFile {
+  string offer_file_id = 1;
+  string offer_id = 2;
+  string owner = 3;
+  string file_name = 4;
+  optional string content_type = 5;
+  uint64 total_size_bytes = 6;
+  uint64 uploaded_size_bytes = 7;
+  int32 ordering = 8;
+  string file_url = 9;
+}

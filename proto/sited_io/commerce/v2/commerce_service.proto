@@ -1,0 +1,344 @@
+syntax = "proto3";
+
+package sited_io.commerce.v2;
+
+import "sited_io/commerce/v2/file.proto";
+import "sited_io/commerce/v2/offer.proto";
+import "sited_io/commerce/v2/order.proto";
+import "sited_io/commerce/v2/query.proto";
+import "sited_io/commerce/v2/stripe.proto";
+import "sited_io/commerce/v2/shop.proto";
+import "sited_io/types/country/v1/country.proto";
+import "sited_io/types/currency/v1/currency.proto";
+import "sited_io/types/query/v1/query.proto";
+
+service CommerceService {
+  // Offer management
+  rpc CreateOffer(CreateOfferRequest) returns (CreateOfferResponse);
+  rpc GetOffer(GetOfferRequest) returns (GetOfferResponse);
+  rpc ListOffers(ListOffersRequest) returns (ListOffersResponse);
+  rpc UpdateOffer(UpdateOfferRequest) returns (UpdateOfferResponse);
+  rpc DeleteOffer(DeleteOfferRequest) returns (DeleteOfferResponse);
+
+  rpc PutPriceToOffer(PutPriceToOfferRequest) returns (PutPriceToOfferResponse);
+  rpc RemovePriceFromOffer(RemovePriceFromOfferRequest)
+      returns (RemovePriceFromOfferResponse);
+
+  rpc PutShippingRateToOffer(PutShippingRateToOfferRequest)
+      returns (PutShippingRateToOfferResponse);
+  rpc RemoveShippingRateFromOffer(RemoveShippingRateFromOfferRequest)
+      returns (RemoveShippingRateFromOfferResponse);
+
+  rpc AddImageToOffer(AddImageToOfferRequest) returns (AddImageToOfferResponse);
+  rpc UpdateImageOrdering(UpdateImageOrderingRequest)
+      returns (UpdateImageOrderingResponse);
+  rpc RemoveImageFromOffer(RemoveImageFromOfferRequest)
+      returns (RemoveImageFromOfferResponse);
+
+  rpc AddFileToOffer(AddFileToOfferRequest) returns (AddFileToOfferResponse);
+  rpc InitiateMultipartUpload(InitiateMultipartUploadRequest)
+      returns (InitiateMultipartUploadResponse);
+  rpc PutMultipartChunk(PutMultipartChunkRequest)
+      returns (PutMultipartChunkResponse);
+  rpc CompleteMultipartUpload(CompleteMultipartUploadRequest)
+      returns (CompleteMultipartUploadResponse);
+  rpc DownloadFile(DownloadFileRequest) returns (DownloadFileResponse);
+  rpc UpdateFileOrdering(UpdateFileOrderingRequest)
+      returns (UpdateFileOrderingResponse);
+  rpc RemoveFileFromOffer(RemoveFileFromOfferRequest)
+      returns (RemoveFileFromOfferResponse);
+
+  // Shop management
+  rpc CreateShop(CreateShopRequest) returns (CreateShopResponse);
+  rpc GetShop(GetShopRequest) returns (GetShopResponse);
+  rpc DeleteShop(DeleteShopRequest) returns (DeleteShopResponse);
+  rpc AddOfferToShop(AddOfferToShopRequest) returns (AddOfferToShopResponse);
+  rpc RemoveOfferFromShop(RemoveOfferFromShopRequest)
+      returns (RemoveOfferFromShopResponse);
+
+  // Orders
+  rpc GetOrder(GetOrderRequest) returns (GetOrderResponse);
+  rpc ListOrders(ListOrdersRequest) returns (ListOrdersResponse);
+
+  // Payment management
+  rpc CreateStripeAccount(CreateStripeAccountRequest)
+      returns (CreateStripeAccountResponse);
+  rpc GetStripeAccount(GetStripeAccountRequest)
+      returns (GetStripeAccountResponse);
+
+  // Payment
+  rpc BuyOffer(BuyOfferRequest) returns (BuyOfferResponse);
+  rpc CancelSubscription(CancelSubscriptionRequest)
+      returns (CancelSubscriptionResponse);
+  rpc ResumeSubscription(ResumeSubscriptionRequest)
+      returns (ResumeSubscriptionResponse);
+}
+
+message CreateOfferRequest {
+  Offer.Details details = 1;
+  OfferType offer_type = 2;
+}
+
+message CreateOfferResponse {
+  Offer offer = 1;
+}
+
+message GetOfferRequest {
+  string offer_id = 1;
+}
+
+message GetOfferResponse {
+  Offer offer = 1;
+}
+
+message ListOffersRequest {
+  optional string owner = 1;
+  optional string shop_id = 2;
+  optional sited_io.types.query.v1.PaginationRequest pagination = 3;
+  optional OffersOrderBy order_by = 4;
+  optional OffersFilter filter = 5;
+}
+
+message ListOffersResponse {
+  repeated Offer offers = 1;
+  sited_io.types.query.v1.PaginationResponse pagination = 2;
+}
+
+message UpdateOfferRequest {
+  string offer_id = 1;
+  Offer.Details details = 2;
+  OfferType offer_type = 3;
+}
+
+message UpdateOfferResponse {
+  Offer offer = 1;
+}
+
+message DeleteOfferRequest {
+  string offer_id = 1;
+}
+
+message DeleteOfferResponse {}
+
+message PutPriceToOfferRequest {
+  string offer_id = 1;
+  uint32 unit_amount = 2;
+  sited_io.types.currency.v1.CurrencyCode currency = 3;
+  PriceType price_type = 4;
+}
+
+message PutPriceToOfferResponse {}
+
+message RemovePriceFromOfferRequest {
+  string offer_id = 1;
+}
+
+message RemovePriceFromOfferResponse {}
+
+message PutShippingRateToOfferRequest {
+  string offer_id = 1;
+  uint32 unit_amount = 2;
+  sited_io.types.currency.v1.CurrencyCode currency = 3;
+  bool all_countries = 4;
+  repeated sited_io.types.country.v1.CountryCode specific_countries = 5;
+}
+
+message PutShippingRateToOfferResponse {}
+
+message RemoveShippingRateFromOfferRequest {
+  string offer_id = 1;
+}
+
+message RemoveShippingRateFromOfferResponse {}
+
+message AddImageToOfferRequest {
+  string offer_id = 1;
+  bytes data = 2;
+  int32 ordering = 3;
+}
+
+message AddImageToOfferResponse {}
+
+message UpdateImageOrderingRequest {
+  string offer_image_id = 1;
+  int32 ordering = 2;
+}
+
+message UpdateImageOrderingResponse {}
+
+message RemoveImageFromOfferRequest {
+  string offer_image_id = 1;
+  string offer_id = 2;
+}
+
+message RemoveImageFromOfferResponse {}
+
+message AddFileToOfferRequest {
+  string file_name = 1;
+  string offer_id = 2;
+  bytes content = 3;
+  optional string content_type = 4;
+  optional int32 ordering = 5;
+}
+
+message AddFileToOfferResponse {}
+
+message InitiateMultipartUploadRequest {
+  string file_name = 1;
+  string offer_id = 2;
+  uint64 total_size_bytes = 3;
+  optional string content_type = 4;
+  optional int32 ordering = 5;
+}
+
+message InitiateMultipartUploadResponse {
+  string offer_file_id = 1;
+  string key = 2;
+  string upload_id = 3;
+}
+
+message PutMultipartChunkRequest {
+  string offer_file_id = 1;
+  string upload_id = 2;
+  int32 part_number = 3;
+  bytes chunk = 4;
+}
+
+message PutMultipartChunkResponse {
+  MultipartPart part = 1;
+}
+
+message CompleteMultipartUploadRequest {
+  string offer_file_id = 1;
+  string upload_id = 2;
+  repeated MultipartPart parts = 3;
+}
+
+message CompleteMultipartUploadResponse {}
+
+message DownloadFileRequest {
+  string offer_file_id = 1;
+}
+
+message DownloadFileResponse {
+  string download_url = 1;
+}
+
+message UpdateFileOrderingRequest {
+  string offer_file_id = 1;
+  int32 ordering = 2;
+}
+
+message UpdateFileOrderingResponse {}
+
+message RemoveFileFromOfferRequest {
+  string offer_file_id = 1;
+}
+
+message RemoveFileFromOfferResponse {}
+
+message CreateShopRequest {
+  string website_id = 1;
+}
+
+message CreateShopResponse {
+  Shop shop = 1;
+}
+
+message GetShopRequest {
+  string shop_id = 1;
+}
+
+message GetShopResponse {
+  Shop shop = 1;
+}
+
+message DeleteShopRequest {
+  string shop_id = 1;
+}
+
+message DeleteShopResponse {}
+
+message AddOfferToShopRequest {
+  string offer_id = 1;
+  string shop_id = 2;
+}
+
+message AddOfferToShopResponse {}
+
+message RemoveOfferFromShopRequest {
+  string offer_id = 1;
+  string shop_id = 2;
+}
+
+message RemoveOfferFromShopResponse {}
+
+message GetOrderRequest {
+  string order_id = 1;
+}
+
+message GetOrderResponse {
+  Order order = 1;
+}
+
+message ListOrdersRequest {
+  optional string offer_id = 1;
+}
+
+message ListOrdersResponse {
+  repeated Order orders = 1;
+}
+
+message CreateStripeAccountRequest {
+  string website_id = 1;
+  string refresh_url = 2;
+  string return_url = 3;
+}
+
+message CreateStripeAccountResponse {
+  StripeAccount stripe_account = 1;
+}
+
+message GetStripeAccountRequest {
+  string website_id = 1;
+}
+
+message GetStripeAccountResponse {
+  StripeAccount stripe_account = 1;
+}
+
+message BuyOfferRequest {
+  string offer_id = 1;
+  string shop_id = 2;
+
+  oneof payment_method {
+    Stripe stripe = 3;
+  }
+
+  message Stripe {
+    string success_url = 1;
+    string cancel_url = 2;
+  }
+}
+
+message BuyOfferResponse {
+  oneof payment_method {
+    Stripe stripe = 1;
+  }
+
+  message Stripe {
+    string link = 1;
+  }
+}
+
+message CancelSubscriptionRequest {
+  string order_id = 1;
+}
+
+message CancelSubscriptionResponse {}
+
+message ResumeSubscriptionRequest {
+  string order_id = 1;
+}
+
+message ResumeSubscriptionResponse {}

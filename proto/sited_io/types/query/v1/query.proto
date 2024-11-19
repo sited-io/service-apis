@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package sited_io.types.query.v1;
+
+message PaginationRequest {
+  uint32 page = 1;
+  uint32 size = 2;
+}
+
+message PaginationResponse {
+  uint32 page = 1;
+  uint32 size = 2;
+  uint32 total_elements = 3;
+}
+
+enum Direction {
+  DIRECTION_UNSPECIFIED = 0;
+  DIRECTION_ASC = 1;
+  DIRECTION_DESC = 2;
+}

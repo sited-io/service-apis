@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package sited_io.commerce.v2;
+
+message StripeAccount {
+  string stripe_account_id = 1;
+  oneof status {
+    Pending pending = 2;
+    Configured configured = 3;
+  }
+
+  message Pending {
+    string link = 1;
+  }
+
+  message Configured {
+    bool charges_enabled = 1;
+    bool details_submitted = 2;
+  }
+}

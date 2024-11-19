@@ -25,7 +25,7 @@ cargo install protoc-gen-tonic
 ##### Generate:
 
 ```sh
-buf generate proto --template proto/buf.gen.rust.yaml
+buf generate proto --template buf.gen.rs.yaml
 ```
 
 #### Typescript in Browser:
@@ -35,13 +35,13 @@ buf generate proto --template proto/buf.gen.rust.yaml
 Install "protoc-gen-\*" with npm.
 
 ```sh
-npm install -g ts-proto
+npm install -g @bufbuild/protoc-gen-es @connectrpc/protoc-gen-connect-es
 ```
 
 ##### Generate:
 
 ```sh
-buf generate proto --template proto/buf.gen.ts.yaml
+buf generate --template buf.gen.ts.yaml
 ```
 
 ---
@@ -50,7 +50,7 @@ Outputs will be in out/ directory.
 
 ### Developement Hints
 
-When using "vscode-proto3" extention in VS Code, add the following to the '.vscode/settings.json' file in order to make the import paths work.
+When using "vscode-proto3" extention in VS Code, add the following to the `.vscode/settings.json` file in order to make the import paths work.
 
 ```json
 {

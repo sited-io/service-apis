@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package sited_io.commerce.v2;
+
+message UserQuota {
+  string user_id = 1;
+  uint64 max_allowed_size_bytes = 2;
+  uint64 uploaded_size_bytes = 3;
+}

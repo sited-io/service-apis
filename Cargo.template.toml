@@ -1,0 +1,12 @@
+[package]
+name = "service-apis"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+prost = { version = "0.13.3", default-features = false, features = ["derive"] }
+tonic = "0.12.3"
+
+[features]
+default = []
+## @@protoc_insertion_point(features)

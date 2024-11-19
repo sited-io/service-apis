@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package sited_io.commerce.v2;
+
+import "sited_io/types/query/v1/query.proto";
+
+enum OffersOrderByField {
+  OFFERS_ORDER_BY_FIELD_UNSPECIFIED = 0;
+  OFFERS_ORDER_BY_FIELD_CREATED_AT = 1;
+  OFFERS_ORDER_BY_FIELD_UPDATED_AT = 2;
+}
+
+message OffersOrderBy {
+  OffersOrderByField field = 1;
+  sited_io.types.query.v1.Direction direction = 2;
+}
+
+enum OffersFilterField {
+  OFFERS_FILTER_FIELD_UNSPECIFIED = 0;
+  OFFERS_FILTER_FIELD_NAME = 1;
+  OFFERS_FILTER_FIELD_DESCRIPTION = 2;
+  OFFERS_FILTER_FIELD_NAME_AND_DESCRIPTION = 3;
+  OFFERS_FILTER_FIELD_TYPE = 4;
+}
+
+message OffersFilter {
+  OffersFilterField field = 1;
+  string query = 2;
+}
+
+enum FileOrderByField {
+  FILE_ORDER_BY_FIELD_UNSPECIFIED = 0;
+  FILE_ORDER_BY_FIELD_CREATED_AT = 1;
+  FILE_ORDER_BY_FIELD_UPDATED_AT = 2;
+  FILE_ORDER_BY_FIELD_ORDERING = 3;
+}
+
+message FileOrderBy {
+  FileOrderByField field = 1;
+  sited_io.types.query.v1.Direction direction = 2;
+}
+
+enum FileFilterField {
+  FILE_FILTER_FIELD_UNSPECIFIED = 0;
+  FILE_FILTER_FIELD_FILENAME = 1;
+  FILE_FILTER_FIELD_OFFER_ID = 2;
+}
+
+message FileFilter {
+  FileFilterField field = 1;
+  string query = 2;
+}

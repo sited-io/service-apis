@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package sited_io.commerce.v2;
+
+message Order {
+  string order_id = 1;
+  string buyer_user_id = 2;
+  string offer_id = 3;
+  int64 created_at = 4;
+  int64 updated_at = 5;
+  OrderType order_type = 6;
+  PaymentMethod payment_method = 7;
+}
+
+message OrderType {
+  oneof order_type_kind {
+    OneOff one_off = 1;
+    Subscription subscription = 2;
+  }
+
+  message OneOff {
+    optional int64 payed_at = 1;
+  }
+
+  message Subscription {
+    int64 current_period_start = 1;
+    int64 current_period_end = 2;
+    string status = 3;
+    optional int64 payed_at = 4;
+    optional int64 payed_until = 5;
+    optional int64 canceled_at = 6;
+    optional int64 cancel_at = 7;
+  }
+}
+
+message PaymentMethod {
+  oneof payment_method_kind {
+    Stripe stripe = 1;
+  }
+
+  message Stripe {
+    optional string subscription_id = 1;
+  }
+}

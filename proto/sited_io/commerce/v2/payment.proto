@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package sited_io.commerce.v2;
+
+import "sited_io/commerce/v2/order.proto";
+
+message Payment {
+  string offer_id = 1;
+  optional string buyer_user_id = 2;
+  OrderType order_type = 3;
+  PaymentMethod payment_method = 4;
+}

@@ -4,8 +4,8 @@ package sited_io.commerce.v2;
 
 message Order {
   string order_id = 1;
-  string buyer_user_id = 2;
-  string offer_id = 3;
+  string offer_id = 2;
+  optional string buyer_user_id = 3;
   int64 created_at = 4;
   int64 updated_at = 5;
   OrderType order_type = 6;

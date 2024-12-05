@@ -9,8 +9,8 @@ plugins:
       - bytes=.
       - file_descriptor_set
 
-  # - local: protoc-gen-prost-serde
-  #   out: gen/rust/src
+  - local: protoc-gen-prost-serde
+    out: gen/rust/src
 
   - local: protoc-gen-tonic
     out: gen/rust/src

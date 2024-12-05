@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { AddFileToOfferRequest, AddFileToOfferResponse, AddImageToOfferRequest, AddImageToOfferResponse, AddOfferToShopRequest, AddOfferToShopResponse, BuyOfferRequest, BuyOfferResponse, CancelSubscriptionRequest, CancelSubscriptionResponse, CompleteMultipartUploadRequest, CompleteMultipartUploadResponse, CreateOfferRequest, CreateOfferResponse, CreateShopRequest, CreateShopResponse, CreateStripeAccountRequest, CreateStripeAccountResponse, DeleteOfferRequest, DeleteOfferResponse, DeleteShopRequest, DeleteShopResponse, DownloadFileRequest, DownloadFileResponse, GetOfferRequest, GetOfferResponse, GetOrderRequest, GetOrderResponse, GetShopRequest, GetShopResponse, GetStripeAccountRequest, GetStripeAccountResponse, InitiateMultipartUploadRequest, InitiateMultipartUploadResponse, ListOffersRequest, ListOffersResponse, ListOrdersRequest, ListOrdersResponse, PutMultipartChunkRequest, PutMultipartChunkResponse, PutPriceToOfferRequest, PutPriceToOfferResponse, PutShippingRateToOfferRequest, PutShippingRateToOfferResponse, RemoveFileFromOfferRequest, RemoveFileFromOfferResponse, RemoveImageFromOfferRequest, RemoveImageFromOfferResponse, RemoveOfferFromShopRequest, RemoveOfferFromShopResponse, RemovePriceFromOfferRequest, RemovePriceFromOfferResponse, RemoveShippingRateFromOfferRequest, RemoveShippingRateFromOfferResponse, ResumeSubscriptionRequest, ResumeSubscriptionResponse, UpdateFileOfferOrderingRequest, UpdateFileOfferOrderingResponse, UpdateOfferRequest, UpdateOfferResponse } from "./commerce_service_pb.js";
+import { AddFileToOfferRequest, AddFileToOfferResponse, AddImageToOfferRequest, AddImageToOfferResponse, AddOfferToShopRequest, AddOfferToShopResponse, BuyOfferRequest, BuyOfferResponse, CancelSubscriptionRequest, CancelSubscriptionResponse, CompleteMultipartUploadRequest, CompleteMultipartUploadResponse, CreateOfferRequest, CreateOfferResponse, CreateShopRequest, CreateShopResponse, CreateStripeAccountRequest, CreateStripeAccountResponse, DeleteOfferRequest, DeleteOfferResponse, DeleteShopRequest, DeleteShopResponse, DownloadFileRequest, DownloadFileResponse, GetOfferRequest, GetOfferResponse, GetOrderRequest, GetOrderResponse, GetShopRequest, GetShopResponse, GetStripeAccountRequest, GetStripeAccountResponse, InitiateMultipartUploadRequest, InitiateMultipartUploadResponse, ListOffersRequest, ListOffersResponse, ListOrdersRequest, ListOrdersResponse, PutMultipartChunkRequest, PutMultipartChunkResponse, PutPriceToOfferRequest, PutPriceToOfferResponse, PutShippingRateToOfferRequest, PutShippingRateToOfferResponse, RemoveFileFromOfferRequest, RemoveFileFromOfferResponse, RemoveImageFromOfferRequest, RemoveImageFromOfferResponse, RemoveOfferFromShopRequest, RemoveOfferFromShopResponse, RemovePriceFromOfferRequest, RemovePriceFromOfferResponse, RemoveShippingRateFromOfferRequest, RemoveShippingRateFromOfferResponse, ResumeSubscriptionRequest, ResumeSubscriptionResponse, UpdateFileOrderingRequest, UpdateFileOrderingResponse, UpdateImageOrderingRequest, UpdateImageOrderingResponse, UpdateOfferRequest, UpdateOfferResponse } from "./commerce_service_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -105,6 +105,15 @@ export const CommerceService = {
       kind: MethodKind.Unary,
     },
     /**
+     * @generated from rpc sited_io.commerce.v2.CommerceService.UpdateImageOrdering
+     */
+    updateImageOrdering: {
+      name: "UpdateImageOrdering",
+      I: UpdateImageOrderingRequest,
+      O: UpdateImageOrderingResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
      * @generated from rpc sited_io.commerce.v2.CommerceService.RemoveImageFromOffer
      */
     removeImageFromOffer: {
@@ -159,12 +168,12 @@ export const CommerceService = {
       kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc sited_io.commerce.v2.CommerceService.UpdateFileOfferOrdering
+     * @generated from rpc sited_io.commerce.v2.CommerceService.UpdateFileOrdering
      */
-    updateFileOfferOrdering: {
-      name: "UpdateFileOfferOrdering",
-      I: UpdateFileOfferOrderingRequest,
-      O: UpdateFileOfferOrderingResponse,
+    updateFileOrdering: {
+      name: "UpdateFileOrdering",
+      I: UpdateFileOrderingRequest,
+      O: UpdateFileOrderingResponse,
       kind: MethodKind.Unary,
     },
     /**

@@ -13,6 +13,7 @@ service WebsiteService {
   rpc ListWebsites(ListWebsitesRequest) returns (ListWebsitesResponse);
   rpc UpdateWebsite(UpdateWebsiteRequest) returns (UpdateWebsiteResponse);
   rpc DeleteWebsite(DeleteWebsiteRequest) returns (DeleteWebsiteResponse);
+  rpc ReplayWebsites(ReplayWebsitesRequest) returns (ReplayWebsitesResponse);
 }
 
 message WebsiteResponse {
@@ -71,3 +72,7 @@ message DeleteWebsiteRequest {
 }
 
 message DeleteWebsiteResponse {}
+
+message ReplayWebsitesRequest {}
+
+message ReplayWebsitesResponse {}
